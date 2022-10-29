@@ -64,6 +64,8 @@ idf.py menuconfig
 ```
 
 ### Component Structure
+Each component contains an include directory where the component_name.h is kept, and a test subdirectory where unit tests are defined for this component.
+As discussed before, each component also has a KConfig.Projbuild that is used to configure some settings like pin assignments, clock rates, etc. 
 ```
 ├── CMakeLists.txt
 ├── component.mk
@@ -76,6 +78,7 @@ idf.py menuconfig
 │   ├── component.mk    
 │   └── test_component_name.c  
 ```
-
+This structure allows a clear dependency tree for our entry point at Weather_Clock.c in /main. All functions, definitions and types are brought into the main namespace by including the header file in our application. It is important to note that this inclusion also brings the components dependencies into scope as well. For example, i2c-lcd1602 component depends on the esp32-smbus component for its i2c driver, and by using #include "i2c-lcd1602.h" in Weather_Clock.c,
+esp32-smbus has also been included, by association. 
 ### Testing
 To verify that the system components work as designed, a /test directory is created that compiles a test binary based on the Unity framework for unit testing. Each component also has a /test subdirectory, ie. /components/net_ctlr/test that has defined Test cases with the unity macro: TEST_CASE("Test_name", "[args]")
