@@ -32,6 +32,7 @@ idf.py menuconfig
 
 
 ## General Project Structure
+```
 ├── CMakeLists.txt
 ├── components
     ├──display_driver
@@ -50,6 +51,6 @@ idf.py menuconfig
 │   └── test_weather_clock.c
 ├── Makefile                   Makefile used by legacy GNU Make
 └── README.md                  This is the file you are currently reading
-
+```
 ## Testing
 To verify that the system components work as designed, a /test directory is created that compiles into a testing environment based on the Unity framework for unit testing. Each component also has a /test subdirectory, ie. /components/net_ctlr/test that has defined Test cases with the unity macro: TEST_CASE("Test_name", "[args]")
