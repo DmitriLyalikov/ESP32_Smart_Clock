@@ -26,6 +26,7 @@ idf.py menuconfig
 ```
 * Menuconfig Main menu
 <img width="464" alt="image" src="https://user-images.githubusercontent.com/68623356/198836527-44ae85d8-0757-4f0b-950e-2c7410b16ec1.png">
+
 * Wifi Configuration 
 <img width="463" alt="image" src="https://user-images.githubusercontent.com/68623356/198836554-73a397ea-e539-46e5-b199-f2d0223e2186.png">
 
