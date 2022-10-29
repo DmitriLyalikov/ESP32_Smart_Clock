@@ -63,7 +63,7 @@ idf.py menuconfig
 ├── test
 │   ├── CMakeLists.txt
 │   ├── component.mk    
-│   └── Weather_Clock.c  
+│   └── test_component_name.c  
 ```
 
 ## Testing
