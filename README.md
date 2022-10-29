@@ -14,7 +14,8 @@ export.bat
 ### Configure and build this project
 ```console
 cd projects
-git clone 
+git clone https://github.com/DmitriLyalikov/ESP32_Smart_Clock.git
+cd ESP32_Smart_Clock
 idf.py fullclean
 idf.py set-target ESP32
 idf.py build
