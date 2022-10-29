@@ -31,7 +31,25 @@ idf.py menuconfig
 <img width="463" alt="image" src="https://user-images.githubusercontent.com/68623356/198836554-73a397ea-e539-46e5-b199-f2d0223e2186.png">
 
 
-
+## General Project Structure
+├── CMakeLists.txt
+├── components
+    ├──display_driver
+    ├──net_ctlr
+    ├──sys_resouce
+      
+├── main
+│   ├── CMakeLists.txt
+│   ├── component.mk    
+│   |──Kconfigu.Projbuild
+│   └── esp-demo.c
+├── test
+│   ├── CMakeLists.txt
+│   ├── component.mk    
+│   |──Kconfigu.Projbuild
+│   └── test_weather_clock.c
+├── Makefile                   Makefile used by legacy GNU Make
+└── README.md                  This is the file you are currently reading
 
 ## Testing
 To verify that the system components work as designed, a /test directory is created that compiles into a testing environment based on the Unity framework for unit testing. Each component also has a /test subdirectory, ie. /components/net_ctlr/test that has defined Test cases with the unity macro: TEST_CASE("Test_name", "[args]")
