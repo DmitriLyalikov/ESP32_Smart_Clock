@@ -35,7 +35,7 @@ idf.py menuconfig
 ```
 ├── CMakeLists.txt
 ├── components                 Developer created component sources
-    ├──display_driver          Functions and resources to interact with an LCD dsiplay
+    ├──display_driver          Functions and resources to interact with an LCD display
     ├──net_ctlr                event handler, wifi config, web request functions for networking functions (May be split up into further subcomponents)
     ├──sys_resouce             Semaphores, queues, thread safe functions and types for task synchronization
 ├── main
