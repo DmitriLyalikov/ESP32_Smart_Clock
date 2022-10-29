@@ -68,9 +68,12 @@
 #include "esp_system.h"
 #include "esp_log.h"
 
+
 #include "i2c-lcd1602.h"
 
 #define TAG "i2c-lcd1602"
+
+
 
 // Delays (microseconds)
 #define DELAY_POWER_ON            50000  // wait at least 40us after VCC rises to 2.7V
