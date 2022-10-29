@@ -16,8 +16,16 @@ export.bat
 cd projects
 git clone 
 idf.py fullclean
+idf.py set-target ESP32
 idf.py build
 ```
+
+### Flashing and Running
+With the ESP32 connected via USB, connected to 'COMx'
+```
+idf.py flash monitor 'COMx'
+```
+This will flash the application onto the system, and restart, it will then provide serial access to the application. This is not needed to use the clock, but is useful to ensure it flashed successfully. 
 
 ### Configure Application settings
 Some configurations may need to be made when using this application. Wifi SSID, Password, and authentication mode must be set before using this app, or the defaults will be used. Generally each component will have a configuration manager that is defined in components/component/Kconfig.Projbuild . Instead of editing hard-coded values in each component source file, a menuconfig utility is provided that can edit these values via command utility:
