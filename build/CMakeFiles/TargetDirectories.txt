@@ -676,6 +676,13 @@ C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/mai
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/main/CMakeFiles/install.dir
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/main/CMakeFiles/install/local.dir
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/main/CMakeFiles/install/strip.dir
+C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/esp32-smbus/CMakeFiles/__idf_esp32-smbus.dir
+C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/esp32-smbus/CMakeFiles/edit_cache.dir
+C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/esp32-smbus/CMakeFiles/rebuild_cache.dir
+C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/esp32-smbus/CMakeFiles/list_install_components.dir
+C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/esp32-smbus/CMakeFiles/install.dir
+C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/esp32-smbus/CMakeFiles/install/local.dir
+C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/esp32-smbus/CMakeFiles/install/strip.dir
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/display_driver/CMakeFiles/__idf_display_driver.dir
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/display_driver/CMakeFiles/edit_cache.dir
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/display_driver/CMakeFiles/rebuild_cache.dir

@@ -70,6 +70,7 @@ C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/test/build/esp-id
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/test/build/esp-idf/ulp/libulp.a
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/test/build/esp-idf/wifi_provisioning/libwifi_provisioning.a
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/test/build/esp-idf/main/libmain.a
-C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/test/build/esp-idf/display_driver/libdisplay_driver.a
-C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/test/build/esp-idf/net_ctlr/libnet_ctlr.a
+C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/test/build/esp-idf/esp32-smbus/libesp32-smbus.a
+C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/test/build/esp-idf/i2c-lcd1602/libi2c-lcd1602.a
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/test/build/esp-idf/sys_resource/libsys_resource.a
+C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/test/build/esp-idf/net_ctlr/libnet_ctlr.a

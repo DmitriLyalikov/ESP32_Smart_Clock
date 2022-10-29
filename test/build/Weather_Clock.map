@@ -8053,7 +8053,9 @@ LOAD esp-idf/spiffs/libspiffs.a
 LOAD esp-idf/ulp/libulp.a
 LOAD esp-idf/wifi_provisioning/libwifi_provisioning.a
 LOAD esp-idf/main/libmain.a
-LOAD esp-idf/display_driver/libdisplay_driver.a
+LOAD esp-idf/esp32-smbus/libesp32-smbus.a
+LOAD esp-idf/i2c-lcd1602/libi2c-lcd1602.a
+LOAD esp-idf/sys_resource/libsys_resource.a
 LOAD esp-idf/net_ctlr/libnet_ctlr.a
 LOAD esp-idf/sys_resource/libsys_resource.a
 LOAD esp-idf/wear_levelling/libwear_levelling.a
@@ -8062,6 +8064,7 @@ LOAD esp-idf/protobuf-c/libprotobuf-c.a
 LOAD esp-idf/mdns/libmdns.a
 LOAD esp-idf/json/libjson.a
 LOAD esp-idf/unity/libunity.a
+LOAD esp-idf/esp32-smbus/libesp32-smbus.a
 LOAD esp-idf/esp_ringbuf/libesp_ringbuf.a
 LOAD esp-idf/efuse/libefuse.a
 LOAD esp-idf/esp_ipc/libesp_ipc.a
@@ -12019,8 +12022,8 @@ LOAD c:/users/dmitr/.espressif/tools/xtensa-esp32-elf/esp-2021r2-patch3-8.4.0/xt
                 0x000000003ffb2c18        0x8 esp-idf/esp_system/libesp_system.a(task_wdt.c.obj)
  .bss.curr_partition$4860
                 0x000000003ffb2c20        0x4 esp-idf/app_update/libapp_update.a(esp_ota_ops.c.obj)
- *(.dynbss .dynsbss .gnu.linkonce.b .gnu.linkonce.b.* .gnu.linkonce.sb .gnu.linkonce.sb.* .gnu.linkonce.sb2 .gnu.linkonce.sb2.* .sbss .sbss.* .sbss2 .sbss2.* .scommon .share.mem)
  *(.ext_ram.bss .ext_ram.bss.*)
+ *(.dynbss .dynsbss .gnu.linkonce.b .gnu.linkonce.b.* .gnu.linkonce.sb .gnu.linkonce.sb.* .gnu.linkonce.sb2 .gnu.linkonce.sb2.* .sbss .sbss.* .sbss2 .sbss2.* .scommon .share.mem)
  *(COMMON)
  COMMON         0x000000003ffb2c24        0x4 esp-idf/heap/libheap.a(heap_caps_init.c.obj)
                 0x000000003ffb2c24                registered_heaps

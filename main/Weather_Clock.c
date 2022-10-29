@@ -18,7 +18,7 @@
 #include "esp_system.h"
 #include "freertos/FreeRTOS.h"
 
-#include "display.h"
+#include "i2c-lcd1602.h"
 #include "sys_resource.h"
 #include "net_ctlr.h"
 
