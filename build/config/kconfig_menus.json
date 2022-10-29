@@ -2048,6 +2048,13 @@
         "type": "menu"
     },
     {
+        "children": [],
+        "depends_on": null,
+        "id": "esp32-weather-clock-configuration",
+        "title": "esp32-weather-clock Configuration",
+        "type": "menu"
+    },
+    {
         "children": [
             {
                 "children": [
