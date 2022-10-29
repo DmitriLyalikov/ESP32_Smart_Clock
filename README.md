@@ -34,21 +34,20 @@ idf.py menuconfig
 ## General Project Structure
 ```
 ├── CMakeLists.txt
-├── components
-    ├──display_driver
-    ├──net_ctlr
-    ├──sys_resouce
-      
+├── components                 Developer created component sources
+    ├──display_driver          Functions and resources to interact with an LCD dsiplay
+    ├──net_ctlr                event handler, wifi config, web request functions for networking functions (May be split up into further subcomponents)
+    ├──sys_resouce             Semaphores, queues, thread safe functions and types for task synchronization
 ├── main
 │   ├── CMakeLists.txt
 │   ├── component.mk    
-│   |──Kconfigu.Projbuild
-│   └── esp-demo.c
-├── test
-│   ├── CMakeLists.txt
+│   |── Kconfig.Projbuild
+│   └── Weather_Clock.c        Entry point to main application. 
+├── test                       Unity based subproject for entering test application
+│   ├── CMakeLists.txt     
 │   ├── component.mk    
-│   |──Kconfigu.Projbuild
-│   └── test_weather_clock.c
+│   |── main                     
+│   └── build
 ├── Makefile                   Makefile used by legacy GNU Make
 └── README.md                  This is the file you are currently reading
 ```
