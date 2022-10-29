@@ -123,8 +123,8 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/wifi_provisioning/cmake_install.cmake")
   include("C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/main/cmake_install.cmake")
   include("C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/display_driver/cmake_install.cmake")
-  include("C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/net_ctlr/cmake_install.cmake")
   include("C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/sys_resource/cmake_install.cmake")
+  include("C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/net_ctlr/cmake_install.cmake")
 
 endif()
 

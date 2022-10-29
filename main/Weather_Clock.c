@@ -26,5 +26,5 @@ void app_main(void)
 {
     ESP_ERROR_CHECK(nvs_flash_init());
     printf("********ESP32 Weather Clock Application********\n");
-    
+
 }

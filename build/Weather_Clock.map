@@ -8484,8 +8484,8 @@ LOAD esp-idf/ulp/libulp.a
 LOAD esp-idf/wifi_provisioning/libwifi_provisioning.a
 LOAD esp-idf/main/libmain.a
 LOAD esp-idf/display_driver/libdisplay_driver.a
-LOAD esp-idf/net_ctlr/libnet_ctlr.a
 LOAD esp-idf/sys_resource/libsys_resource.a
+LOAD esp-idf/net_ctlr/libnet_ctlr.a
 LOAD esp-idf/asio/libasio.a
 LOAD esp-idf/cbor/libcbor.a
 LOAD esp-idf/cmock/libcmock.a
@@ -8511,6 +8511,7 @@ LOAD esp-idf/protocomm/libprotocomm.a
 LOAD esp-idf/protobuf-c/libprotobuf-c.a
 LOAD esp-idf/mdns/libmdns.a
 LOAD esp-idf/json/libjson.a
+LOAD esp-idf/sys_resource/libsys_resource.a
 LOAD esp-idf/esp_ringbuf/libesp_ringbuf.a
 LOAD esp-idf/efuse/libefuse.a
 LOAD esp-idf/esp_ipc/libesp_ipc.a
@@ -13078,7 +13079,7 @@ LOAD c:/users/dmitr/.espressif/tools/xtensa-esp32-elf/esp-2021r2-patch3-8.4.0/xt
                 0x000000003f403114        0xc esp-idf/newlib/libnewlib.a(locks.c.obj)
  .rodata.app_main.str1.4
                 0x000000003f403120       0x74 esp-idf/main/libmain.a(Weather_Clock.c.obj)
- .rodata.__func__$6107
+ .rodata.__func__$6010
                 0x000000003f403194        0x9 esp-idf/main/libmain.a(Weather_Clock.c.obj)
  *fill*         0x000000003f40319d        0x3 
  .rodata.range_read_addr_blocks

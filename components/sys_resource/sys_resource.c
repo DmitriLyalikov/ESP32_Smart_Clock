@@ -1,11 +1,10 @@
 #include "sys_resource.h"
 
-
 /**
  * @brief Initialize Mailbox Queue
  * @returns QueueHandle_T: Handle to initialize queue  
  */
-static QueueHandle_t vQueueInit(void)
+QueueHandle_t vQueueInit(void)
 {   
     return xQueueCreate(1, sizeof(xPayload_t));
 }
@@ -16,7 +15,7 @@ static QueueHandle_t vQueueInit(void)
  * @param Queue : queue handle of type QueueHandle_t
  * @param ulNewValue : uin16_t value to write
  */
-static void vUpdateQueue(QueueHandle_t Queue, uint16_t ulNewValue)
+void vUpdateQueue(QueueHandle_t Queue, uint16_t ulNewValue)
 {
     xPayload_t xData;
     xData.ulValue = ulNewValue;
@@ -32,7 +31,7 @@ static void vUpdateQueue(QueueHandle_t Queue, uint16_t ulNewValue)
  * @param pxData : Pointer to struct of type xPayload_t to read into
  * @param Queue  : Queue handle of type QueueHandle_t to read from
  */
-static void vReadQueue(xPayload_t *pxData, QueueHandle_t Queue)
+void vReadQueue(xPayload_t *pxData, QueueHandle_t Queue)
 {
     xQueuePeek(Queue, pxData, portMAX_DELAY);
 }

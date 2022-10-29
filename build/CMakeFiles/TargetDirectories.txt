@@ -683,13 +683,6 @@ C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/dis
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/display_driver/CMakeFiles/install.dir
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/display_driver/CMakeFiles/install/local.dir
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/display_driver/CMakeFiles/install/strip.dir
-C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/net_ctlr/CMakeFiles/__idf_net_ctlr.dir
-C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/net_ctlr/CMakeFiles/edit_cache.dir
-C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/net_ctlr/CMakeFiles/rebuild_cache.dir
-C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/net_ctlr/CMakeFiles/list_install_components.dir
-C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/net_ctlr/CMakeFiles/install.dir
-C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/net_ctlr/CMakeFiles/install/local.dir
-C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/net_ctlr/CMakeFiles/install/strip.dir
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/sys_resource/CMakeFiles/__idf_sys_resource.dir
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/sys_resource/CMakeFiles/edit_cache.dir
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/sys_resource/CMakeFiles/rebuild_cache.dir
@@ -697,3 +690,10 @@ C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/sys
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/sys_resource/CMakeFiles/install.dir
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/sys_resource/CMakeFiles/install/local.dir
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/sys_resource/CMakeFiles/install/strip.dir
+C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/net_ctlr/CMakeFiles/__idf_net_ctlr.dir
+C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/net_ctlr/CMakeFiles/edit_cache.dir
+C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/net_ctlr/CMakeFiles/rebuild_cache.dir
+C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/net_ctlr/CMakeFiles/list_install_components.dir
+C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/net_ctlr/CMakeFiles/install.dir
+C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/net_ctlr/CMakeFiles/install/local.dir
+C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/build/esp-idf/net_ctlr/CMakeFiles/install/strip.dir

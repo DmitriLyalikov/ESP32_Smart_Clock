@@ -1,9 +1,6 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "freertos/queue.h"
-#include "freertos/timers.h"
-#include "freertos/event_groups.h"
-#include "freertos/semphr.h"
 
 /**
  * @brief Unit of transfer between queues
@@ -21,7 +18,7 @@ typedef struct xPayload_t
  * @brief Initialize Mailbox Queue
  * @returns QueueHandle_T: Handle to initialize queue  
  */
-static QueueHandle_t vQueueInit(void);
+QueueHandle_t vQueueInit(void);
 
 /**
  * @brief Write a value to queue
@@ -29,7 +26,7 @@ static QueueHandle_t vQueueInit(void);
  * @param Queue : queue handle of type QueueHandle_t
  * @param ulNewValue : uin16_t value to write
  */
-static void vUpdateQueue(QueueHandle_t Queue, uint16_t ulNewValue);
+void vUpdateQueue(QueueHandle_t Queue, uint16_t ulNewValue);
 
 /**
  * @brief Read queue and pop value read, 
@@ -37,5 +34,5 @@ static void vUpdateQueue(QueueHandle_t Queue, uint16_t ulNewValue);
  * @param pxData : Pointer to struct of type xPayload_t to read into
  * @param Queue  : Queue handle of type QueueHandle_t to read from
  */
-static void vReadQueue(xPayload_t *pxData, QueueHandle_t Queue);
+void vReadQueue(xPayload_t *pxData, QueueHandle_t Queue);
 
