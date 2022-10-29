@@ -51,5 +51,20 @@ idf.py menuconfig
 ├── Makefile                   Makefile used by legacy GNU Make
 └── README.md                  This is the file you are currently reading
 ```
+
+## Component Structure
+```
+├── CMakeLists.txt
+├── component.mk
+├── component_name.c
+├── KConfig.Projbuild
+├── include              
+    ├──component_name.h                   
+├── test
+│   ├── CMakeLists.txt
+│   ├── component.mk    
+│   └── Weather_Clock.c  
+```
+
 ## Testing
-To verify that the system components work as designed, a /test directory is created that compiles into a testing environment based on the Unity framework for unit testing. Each component also has a /test subdirectory, ie. /components/net_ctlr/test that has defined Test cases with the unity macro: TEST_CASE("Test_name", "[args]")
+To verify that the system components work as designed, a /test directory is created that compiles a test binary based on the Unity framework for unit testing. Each component also has a /test subdirectory, ie. /components/net_ctlr/test that has defined Test cases with the unity macro: TEST_CASE("Test_name", "[args]")
