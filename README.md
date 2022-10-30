@@ -34,6 +34,20 @@ With both an API key, and city, a complete query will appear as:
 http://api.openweathermap.org/data/2.5/weather?q={City},pt&APPID={yourAPIkey}
 ```
 
+### NTP Synchronization
+In order to synchronize time accurately, the ESP-IDF LwIP SNTP module is used. https://github.com/espressif/esp-idf/tree/master/examples/protocols/sntp
+This provides time synchronizations over WiFi upon initialization. Upon reset, WiFi will be initialized and an SNTP server connection will be started with the ESP32 acting as a client. 
+
+#### Set Timezone
+To set local timezone, use setenv and tzset POSIX functions. First, call setenv to set TZ environment variable to the correct value depending on device location. Format of the time string is described in libc documentation. Next, call tzset to update C library runtime data for the new time zone. Once these steps are done, localtime function will return correct local time, taking time zone offset and daylight saving time into account.
+
+#### TimeKeeping
+Once time is synchronized, ESP32 will perform timekeeping using built-in timers.
+
+* RTC clock is used to maintain accurate time when chip is in deep sleep mode
+
+* High-resolution timer is used to provide time at microsecond accuracy when ESP32 is running.
+
 ### Using this application
 This application is created in the esp-idf framework. The toolchain, compiler, drivers, all can be installed locally here: https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/
 
