@@ -101,10 +101,11 @@ idf.py menuconfig
 │   |── Kconfig.Projbuild
 │   └── Weather_Clock.c        Entry point to main application. 
 ├── test                       Unity based subproject for entering test application
-│   ├── CMakeLists.txt     
+│   ├── CMakeLists.txt   
 │   ├── component.mk    
 │   |── main                     
 │   └── build
+├── enclosure                  Design (.stl) files for 3D printed system enclosure
 ├── Makefile                   Makefile used by legacy GNU Make
 └── README.md                  This is the file you are currently reading
 ```
