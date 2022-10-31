@@ -1,0 +1,7 @@
+source "C:/Users/Dmitr/OneDrive/Desktop/esp-idf/components/app_update/Kconfig.projbuild"
+source "C:/Users/Dmitr/OneDrive/Desktop/esp-idf/components/bootloader/Kconfig.projbuild"
+source "C:/Users/Dmitr/OneDrive/Desktop/esp-idf/components/esp_rom/Kconfig.projbuild"
+source "C:/Users/Dmitr/OneDrive/Desktop/esp-idf/components/esptool_py/Kconfig.projbuild"
+source "C:/Users/Dmitr/OneDrive/Desktop/esp-idf/components/partition_table/Kconfig.projbuild"
+source "C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/components/i2c-lcd1602/Kconfig.projbuild"
+source "C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/components/net_ctlr/Kconfig.projbuild"
