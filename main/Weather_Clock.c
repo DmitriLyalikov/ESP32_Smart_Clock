@@ -22,6 +22,7 @@
 #include "sys_resource.h"
 #include "net_ctlr.h"
 
+#define TAG "Weather Clock"
 static SemaphoreHandle_t xTimeMutex;
 QueueHandle_t xTimeSyncQueue();
 
@@ -83,7 +84,7 @@ void app_main(void)
       ret = nvs_flash_init();
     }
     ESP_ERROR_CHECK(ret);
-    printf("********ESP32 Weather Clock Application********\n");
+    ESP_LOGI(TAG, "********ESP32 Weather Clock Application********\n");
 
     wifi_init_sta();
     xTaskCreatePinnedToCore(&vdisplay_task,
