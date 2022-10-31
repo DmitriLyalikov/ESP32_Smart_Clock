@@ -22,7 +22,7 @@
 #include "sys_resource.h"
 #include "net_ctlr.h"
 
-#define TAG "Weather Clock"
+static const char* TAG = "Weather Clock";
 static SemaphoreHandle_t xTimeMutex;
 QueueHandle_t xTimeSyncQueue();
 
