@@ -13,10 +13,10 @@ The 3D printed .stl design files are included in the /enclosure subdirectory. Th
 * Infill: 5%
 * Material: PLA 
 
-### Output:
+#### Output:
 ![Output](https://user-images.githubusercontent.com/68623356/199354630-e3ac5d52-b24f-469f-bc51-495f513d2790.png)
 
-### Assembled:
+#### Assembled:
 ![Front_View](https://user-images.githubusercontent.com/68623356/199354694-d2573fd8-e015-400b-b392-4d89a670fdb3.jpg)
 
 
