@@ -8,10 +8,17 @@ This repository contains all the subcomponents, design files, and source code fo
 * PCF8574 I2C Adaptor ( LCD I2C Controller) 
 
 #### Enclosure 
-The 3D printed .stl design files are included in the /enclosure subdirectory. These three components are printed using the Creality CR-10S4 3D printer. Total printing time is about 4-6 hours with the following settings. 
+The 3D printed .stl design files are included in the /enclosure subdirectory. These three components are printed using the Creality CR-10S4 3D printer. Total printing time is about 4-7 hours with the following settings. 
 * Resolution: .28
 * Infill: 5%
 * Material: PLA 
+
+![Output](https://user-images.githubusercontent.com/68623356/199353986-0f3abde3-fe28-4307-9b01-08a83e0e389c.png)
+
+
+![Front_View](https://user-images.githubusercontent.com/68623356/199354044-cc797452-1e8d-40df-86a7-9aee60b6cf28.jpg)
+
+![Rear_View](https://user-images.githubusercontent.com/68623356/199354114-3300dda0-86d3-45b7-9c7f-1429ebb9530f.png)
 
 ### Live Weather 
 Weather information like Precipitation, Clouds, Pressure, Temperature, Wind are accessed for the desired City or GeoLocation via the  https://openweathermap.org/current HTTP server. This has an API which processes HTTP requests and returns a JSON response including the weather data. 
