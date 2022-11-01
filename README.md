@@ -13,12 +13,12 @@ The 3D printed .stl design files are included in the /enclosure subdirectory. Th
 * Infill: 5%
 * Material: PLA 
 
-![Output](https://user-images.githubusercontent.com/68623356/199353986-0f3abde3-fe28-4307-9b01-08a83e0e389c.png)
+### Output:
+![Output](https://user-images.githubusercontent.com/68623356/199354630-e3ac5d52-b24f-469f-bc51-495f513d2790.png)
 
+### Assembeled:
+![Front_View](https://user-images.githubusercontent.com/68623356/199354694-d2573fd8-e015-400b-b392-4d89a670fdb3.jpg)
 
-![Front_View](https://user-images.githubusercontent.com/68623356/199354044-cc797452-1e8d-40df-86a7-9aee60b6cf28.jpg)
-
-![Rear_View](https://user-images.githubusercontent.com/68623356/199354114-3300dda0-86d3-45b7-9c7f-1429ebb9530f.png)
 
 ### Live Weather 
 Weather information like Precipitation, Clouds, Pressure, Temperature, Wind are accessed for the desired City or GeoLocation via the  https://openweathermap.org/current HTTP server. This has an API which processes HTTP requests and returns a JSON response including the weather data. 
