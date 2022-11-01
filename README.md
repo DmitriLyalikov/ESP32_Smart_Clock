@@ -8,7 +8,7 @@ This repository contains all the subcomponents, design files, and source code fo
 * PCF8574 I2C Adaptor ( LCD I2C Controller) 
 
 #### Enclosure 
-The 3D printed .stl design files are included in the /enclosure subdirectory. These three components are printed using the Creality CR-10S4 3D printer. Total printing time is about 4-7 hours with the following settings. 
+The 3D printed .stl design files are included in the /enclosure subdirectory. These three components are printed using the Creality CR-10S4 3D printer. Total printing time is about 6.5 hours with the following settings. 
 * Resolution: .28
 * Infill: 5%
 * Material: PLA 
