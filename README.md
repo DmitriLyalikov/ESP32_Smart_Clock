@@ -10,6 +10,7 @@ This repository contains all the subcomponents, design files, and source code fo
 
 #### Enclosure 
 The 3D printed .stl design files are included in the /enclosure subdirectory. These three components are printed using the Creality CR-10S4 3D printer. Total printing time is about 6.5 hours with the following settings. The output file was generated using the Ultimaker Cura software.
+#### Input File
 <img width="309" alt="image" src="https://user-images.githubusercontent.com/68623356/199358488-a9c7ab37-cadc-4ed7-b56a-74c9dab40e93.png">
 
 * Resolution: .28
