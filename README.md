@@ -1,9 +1,28 @@
 # ESP32 Smart Clock 
-This is my Embedded System Design Semester Project. I am using the ESP32 platform to make a LCD clock that displays time synchronised from an NTP server and current weather forecasts from a HTTP based weather API. This repository contains all the subcomponents, design files, and source code for this system. It is designed to work out of the box. 
+This is my Embedded Systems Design Semester Project. I am using the ESP32 platform to make a LCD digital clock that displays time synchronised from an NTP server and current weather forecasts from a HTTP based weather API. 
+
+This repository contains all the subcomponents, design files, and source code for this system. It is designed to work out 'of the box'. 
 ### Demonstration Hardware 
 * ESP32-DevKitC-V4 (ESP32 Based evaluation board)
 * LCD 2004            ( 4x16 LCD)
-* PCF8574 I2C Adaptor ( LCD I2C Controller) 
+* PCF8574 I2C Adaptor ( LCD I2C Controller)
+* 3D Printed PLA Enclosure ( Front, Rear, and Side Supports)
+
+#### Enclosure 
+The 3D printed .stl design files are included in the /enclosure subdirectory. These three components are printed using the Creality CR-10S4 3D printer. Total printing time is about 6.5 hours with the following settings. The output file was generated using the Ultimaker Cura software.
+#### Input File
+<img width="309" alt="image" src="https://user-images.githubusercontent.com/68623356/199358488-a9c7ab37-cadc-4ed7-b56a-74c9dab40e93.png">
+
+* Resolution: .28
+* Infill: 5%
+* Material: PLA 
+
+#### Output:
+![Output](https://user-images.githubusercontent.com/68623356/199354630-e3ac5d52-b24f-469f-bc51-495f513d2790.png)
+
+#### Assembled:
+![Front_View](https://user-images.githubusercontent.com/68623356/199354694-d2573fd8-e015-400b-b392-4d89a670fdb3.jpg)
+
 
 ### Live Weather 
 Weather information like Precipitation, Clouds, Pressure, Temperature, Wind are accessed for the desired City or GeoLocation via the  https://openweathermap.org/current HTTP server. This has an API which processes HTTP requests and returns a JSON response including the weather data. 
