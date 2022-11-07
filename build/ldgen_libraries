@@ -70,6 +70,7 @@ C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/ulp/libulp.a
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/wifi_provisioning/libwifi_provisioning.a
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/main/libmain.a
+C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/ble_config/libble_config.a
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/esp32-smbus/libesp32-smbus.a
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/i2c-lcd1602/libi2c-lcd1602.a
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/sys_resource/libsys_resource.a

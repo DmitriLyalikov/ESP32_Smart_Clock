@@ -2048,6 +2048,13 @@
         "type": "menu"
     },
     {
+        "children": [],
+        "depends_on": null,
+        "id": "bluetooth-ble-configuration",
+        "title": "Bluetooth/BLE Configuration",
+        "type": "menu"
+    },
+    {
         "children": [
             {
                 "children": [],

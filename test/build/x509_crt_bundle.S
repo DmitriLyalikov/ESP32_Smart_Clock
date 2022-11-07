@@ -1,4 +1,4 @@
-/* * Data converted from C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/test/build/esp-idf/mbedtls/x509_crt_bundle
+/* * Data converted from C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/test/build/esp-idf/mbedtls/x509_crt_bundle
  */
 .data
 .section .rodata.embedded

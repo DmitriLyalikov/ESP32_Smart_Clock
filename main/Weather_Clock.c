@@ -21,6 +21,7 @@
 #include "i2c-lcd1602.h"
 #include "sys_resource.h"
 #include "net_ctlr.h"
+#include "ble_config.h"
 
 static const char* TAG = "Weather Clock";
 static SemaphoreHandle_t xTimeMutex;

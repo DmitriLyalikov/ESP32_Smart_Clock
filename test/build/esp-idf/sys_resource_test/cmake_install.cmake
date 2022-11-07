@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/Weather_Clock/components/sys_resource/test
+# Install script for directory: C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/components/sys_resource/test
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
