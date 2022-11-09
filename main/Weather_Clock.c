@@ -25,7 +25,7 @@
 
 static const char* TAG = "Weather Clock";
 static SemaphoreHandle_t xTimeMutex;
-QueueHandle_t xTimeSyncQueue();
+QueueHandle_t xTimeSyncQueue;
 
 static void i2c_master_init(void)
 {
