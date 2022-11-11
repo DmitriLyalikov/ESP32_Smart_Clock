@@ -44,7 +44,10 @@ static void i2c_master_init(void)
 }
 
 /**
- * @brief Display Task
+ * @brief Display Task 
+ * 
+ * Low (1) Priority FreeRTOS Task that will block until mailbox is full 
+ * 
  * 
  */
 static void vdisplay_task(void *pvParameter) {
