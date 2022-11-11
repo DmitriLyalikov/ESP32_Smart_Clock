@@ -2048,6 +2048,34 @@
         "type": "menu"
     },
     {
+        "children": [
+            {
+                "children": [],
+                "depends_on": null,
+                "help": "Time Zone of desired region",
+                "id": "TIMEZONE",
+                "name": "TIMEZONE",
+                "range": null,
+                "title": "Clock Time Zone",
+                "type": "string"
+            },
+            {
+                "children": [],
+                "depends_on": null,
+                "help": "The City/Town/Region string specified to use.",
+                "id": "CITY",
+                "name": "CITY",
+                "range": null,
+                "title": "WiFi Password",
+                "type": "string"
+            }
+        ],
+        "depends_on": null,
+        "id": "weather-clock-configuration",
+        "title": "Weather Clock Configuration",
+        "type": "menu"
+    },
+    {
         "children": [],
         "depends_on": null,
         "id": "bluetooth-ble-configuration",

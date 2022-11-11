@@ -1,0 +1,13 @@
+menu "Weather Clock Configuration"
+    config TIMEZONE
+        string "Clock Time Zone"
+        default "EST"
+        help
+            Time Zone of desired region
+
+    config CITY
+        string "WiFi Password"
+        default "New York"
+        help
+            The City/Town/Region string specified to use. 
+    endmenu

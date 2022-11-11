@@ -10,6 +10,8 @@
  */
 
 #include <stdio.h>
+#include <time.h>                       
+#include <sys/time.h>
 #include "esp_log.h"
 #include "esp_err.h"
 #include "nvs_flash.h"
@@ -22,6 +24,9 @@
 #include "sys_resource.h"
 #include "net_ctlr.h"
 #include "ble_config.h"
+
+#define TIMEZONE CONFIG_TIMEZONE
+#define CITY     CONFIG_CITY
 
 static const char* TAG = "Weather Clock";
 static SemaphoreHandle_t xTimeMutex;
@@ -72,11 +77,31 @@ static void vdisplay_task(void *pvParameter) {
     i2c_lcd1602_move_cursor(lcd_info, 0, 1);
     i2c_lcd1602_write_string(lcd_info, "World");
 
+    time_t now;
+    char strftime_buf[64];
+    struct tm timeinfo;
+    // Set timezone to CONFIG_TIMEZONE
+    time(&now);
+    setenv("TZ", TIMEZONE, 1);
+    tzset();
     for (;;)
     {
-
-        
+      // Get Current Time from RTC 
+      localtime_r(&now, &timeinfo);
+      strftime(strftime_buf, sizeof(strftime_buf), "%c", &timeinfo);
+      ESP_LOGI(TAG, "Got current date/time in %s: %s\n", CITY, strftime_buf);   
     }
+}
+
+/**
+ * @brief NTP Synchronization Task 
+ *     Must be used after WiFI connection is established.
+ *     
+ * 
+ * @param pvParameter 
+ */
+void vTimeSync_Task(void *pvParameter) {
+
 }
 
 void app_main(void)
