@@ -36,7 +36,7 @@ QueueHandle_t xTimeSyncQueue();
 #define I2C_MASTER_FREQ_HZ       100000
 #define I2C_MASTER_SDA_IO        21
 #define I2C_MASTER_SCL_IO        22
-#define LCD1602_I2C_ADDRESS 0x27
+#define LCD1602_I2C_ADDRESS 0x3F
 
 
 static void i2c_master_init(void)
