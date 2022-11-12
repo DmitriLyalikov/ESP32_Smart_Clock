@@ -10,4 +10,5 @@ menu "Weather Clock Configuration"
         default "New York"
         help
             The City/Town/Region string specified to use. 
+            
     endmenu

@@ -34,23 +34,6 @@
 static const char* TAG = "Weather Clock";
 static SemaphoreHandle_t xTimeMutex;
 QueueHandle_t xTimeSyncQueue;
-/*
-static void i2c_master_init(void)
-{
-    int i2c_master_port = I2C_MASTER_NUM;
-    i2c_config_t conf;
-    conf.mode = I2C_MODE_MASTER;
-    conf.sda_io_num = I2C_MASTER_SDA;
-    conf.sda_pullup_en = GPIO_PULLUP_DISABLE;  
-    conf.scl_io_num = I2C_MASTER_SCL;
-    conf.scl_pullup_en = GPIO_PULLUP_DISABLE;  
-    conf.master.clk_speed = I2C_MASTER_FREQ_HZ;
-    i2c_param_config(i2c_master_port, &conf);
-    i2c_driver_install(i2c_master_port, conf.mode,
-                       I2C_MASTER_RX_BUF_LEN,
-                       I2C_MASTER_TX_BUF_LEN, 0);
-}
-*/
 
 static void i2c_master_init(void)
 {
@@ -77,29 +60,25 @@ static void i2c_master_init(void)
  * 
  */
 static void vdisplay_task(void *pvParameter) {
-    // Init I2C Master
     i2c_master_init();
-    ESP_LOGI(TAG, "i2c init ok\n");
     i2c_port_t i2c_num = I2C_MASTER_NUM;
     uint8_t address = LCD1602_I2C_ADDRESS;
 
-    // Init SMBus
+    // Set up the SMBus
     smbus_info_t * smbus_info = smbus_malloc();
     ESP_ERROR_CHECK(smbus_init(smbus_info, i2c_num, address));
     ESP_ERROR_CHECK(smbus_set_timeout(smbus_info, 1000 / portTICK_RATE_MS));
 
-    // Init LCD1602 device
-    ESP_LOGI(TAG, "INIT SMBUS\n");
-    i2c_lcd1602_info_t * lcd_info =  i2c_lcd1602_malloc();
+    // Set up the LCD1602 device with backlight off
+    i2c_lcd1602_info_t * lcd_info = i2c_lcd1602_malloc();
     ESP_ERROR_CHECK(i2c_lcd1602_init(lcd_info, smbus_info, true,
-                              LCD_NUM_ROWS, LCD_NUM_COLUMNS, LCD_NUM_VISIBLE_COLUMNS));
-    ESP_LOGI(TAG, "I2C LCD Init\n");
-    ESP_ERROR_CHECK(i2c_lcd1602_reset(lcd_info));
-    i2c_lcd1602_set_backlight(lcd_info, true);
+                                    LCD_NUM_ROWS, LCD_NUM_COLUMNS, LCD_NUM_VISIBLE_COLUMNS));
 
-    i2c_lcd1602_write_string(lcd_info, "Hello");
+    ESP_ERROR_CHECK(i2c_lcd1602_reset(lcd_info));
+
+    i2c_lcd1602_write_string(lcd_info, "    Hello Dmitri");
     i2c_lcd1602_move_cursor(lcd_info, 0, 1);
-    i2c_lcd1602_write_string(lcd_info, "World");
+    i2c_lcd1602_write_string(lcd_info, CONFIG_CITY);
 
     time_t now;
     char strftime_buf[64];
@@ -114,6 +93,7 @@ static void vdisplay_task(void *pvParameter) {
       localtime_r(&now, &timeinfo);
       strftime(strftime_buf, sizeof(strftime_buf), "%c", &timeinfo);
       ESP_LOGI(TAG, "Got current date/time in %s: %s\n", CITY, strftime_buf);   
+      vTaskDelay(500 / portTICK_PERIOD_MS);
     }
 }
 

@@ -68,12 +68,9 @@
 #include "esp_system.h"
 #include "esp_log.h"
 
-
 #include "i2c-lcd1602.h"
 
 #define TAG "i2c-lcd1602"
-
-
 
 // Delays (microseconds)
 #define DELAY_POWER_ON            50000  // wait at least 40us after VCC rises to 2.7V
@@ -296,7 +293,6 @@ esp_err_t i2c_lcd1602_reset(const i2c_lcd1602_info_t * i2c_lcd1602_info)
     esp_err_t last_err = ESP_FAIL;
 
     // put Expander into known state - Register Select and Read/Write both low
-    ESP_LOGI(TAG, "Aye");
     if ((last_err = _write_to_expander(i2c_lcd1602_info, 0)) != ESP_OK)
     {
         if (first_err == ESP_OK)
@@ -305,7 +301,7 @@ esp_err_t i2c_lcd1602_reset(const i2c_lcd1602_info_t * i2c_lcd1602_info)
     }
 
     ets_delay_us(1000);
-    ESP_LOGI(TAG, "Ayeee");
+
     // select 4-bit mode on LCD controller - see datasheet page 46, figure 24.
     if ((last_err = _write_top_nibble(i2c_lcd1602_info, 0x03 << 4)) != ESP_OK)
     {
