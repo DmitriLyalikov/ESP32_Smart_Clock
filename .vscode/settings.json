@@ -1,6 +1,7 @@
 {
     "idf.adapterTargetName": "esp32",
     "files.associations": {
-        "net_ctlr.h": "c"
+        "net_ctlr.h": "c",
+        "smbus.h": "c"
     }
 }

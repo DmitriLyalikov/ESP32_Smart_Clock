@@ -1,13 +1,3 @@
-/**
- * @file
- * @brief Interface definitions for the ESP32-compatible I2C LCD1602 component.
- *
- * This component provides structures and functions that are useful for communicating with the device.
- *
- * Technically, the LCD1602 device is an I2C not SMBus device, however some SMBus protocols can be used
- * to communicate with the device, so it makes sense to use an SMBus interface to manage communication.
- */
-
 #ifndef I2C_LCD1602_H
 #define I2C_LCD1602_H
 
@@ -307,3 +297,4 @@ esp_err_t i2c_lcd1602_write_string(const i2c_lcd1602_info_t * i2c_lcd1602_info, 
 #endif
 
 #endif // I2C_LCD1602_H
+

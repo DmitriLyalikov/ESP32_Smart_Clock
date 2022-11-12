@@ -1,65 +1,3 @@
-/**
- * @file
- *
- * @brief
- * The LCD1602 controller is an HD44780-compatible controller that normally operates
- * via an 8-bit or 4-bit wide parallel bus.
- *
- * The LCD1602 controller is connected to a PCF8574A I/O expander via the I2C bus.
- * Only the top four bits are connected to the controller's data lines. The lower
- * four bits are used as control lines:
- *
- *   - B7: data bit 3
- *   - B6: data bit 2
- *   - B5: data bit 1
- *   - B4: data bit 0
- *   - B3: backlight (BL): off = 0, on = 1
- *   - B2: enable (EN): change from 1 to 0 to clock data into controller
- *   - B1: read/write (RW): write = 0, read = 1
- *   - B0: register select (RS): command = 0, data = 1
- *
- * Therefore to send a command byte requires the following operations:
- *
- *   // First nibble:
- *   val = command & 0xf0              // extract top nibble
- *   val |= 0x04                       // RS = 0 (command), RW = 0 (write), EN = 1
- *   i2c_write_byte(i2c_address, val)
- *   sleep(2ms)
- *   val &= 0xfb                       // EN = 0
- *   i2c_write_byte(i2c_address, val)
- *
- *   // Second nibble:
- *   val = command & 0x0f              // extract bottom nibble
- *   val |= 0x04                       // RS = 0 (command), RW = 0 (write), EN = 1
- *   i2c_write_byte(i2c_address, val)
- *   sleep(2ms)
- *   val &= 0xfb                       // EN = 0
- *   i2c_write_byte(i2c_address, val)
- *
- * Sending a data byte is very similar except that RS = 1 (data)
- *
- * When the controller powers up, it defaults to:
- *
- *   - display cleared
- *   - 8-bit interface, 1 line display, 5x8 dots per character
- *   - increment by 1 set
- *   - no shift
- *
- * The controller must be set to 4-bit operation before proper communication can commence.
- * The initialisation sequence for 4-bit operation is:
- *
- *   0. wait > 15ms after Vcc rises to 4.5V, or > 40ms after Vcc rises to 2.7V
- *   1. send nibble 0x03     // select 8-bit interface
- *   2. wait > 4.1ms
- *   3. send nibble 0x03     // select 8-bit interface again
- *   4. wait > 100us
- *   5. send command 0x32    // select 4-bit interface
- *   6. send command 0x28    // set 2 lines and 5x7(8?) dots per character
- *   7. send command 0x0c    // display on, cursor off
- *   8. send command 0x06    // move cursor right when writing, no scroll
- *   9. send command 0x80    // set cursor to home position (row 1, column 1)
- */
-
 #include <stddef.h>
 #include <string.h>
 
@@ -68,12 +6,9 @@
 #include "esp_system.h"
 #include "esp_log.h"
 
-
 #include "i2c-lcd1602.h"
 
 #define TAG "i2c-lcd1602"
-
-
 
 // Delays (microseconds)
 #define DELAY_POWER_ON            50000  // wait at least 40us after VCC rises to 2.7V
