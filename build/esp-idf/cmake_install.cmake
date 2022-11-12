@@ -127,6 +127,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/i2c-lcd1602/cmake_install.cmake")
   include("C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/sys_resource/cmake_install.cmake")
   include("C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/net_ctlr/cmake_install.cmake")
+  include("C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/ntp_sync/cmake_install.cmake")
 
 endif()
 

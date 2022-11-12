@@ -75,3 +75,4 @@ C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/i2c-lcd1602/libi2c-lcd1602.a
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/sys_resource/libsys_resource.a
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/net_ctlr/libnet_ctlr.a
+C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/ntp_sync/libntp_sync.a

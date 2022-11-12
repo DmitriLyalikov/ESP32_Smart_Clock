@@ -22,6 +22,7 @@
 #include "freertos/FreeRTOS.h"
 #include "driver/i2c.h"
 
+#include "ntp_sync.h"
 #include "smbus.h"
 #include "i2c-lcd1602.h"
 #include "sys_resource.h"
@@ -92,6 +93,10 @@ static void vdisplay_task(void *pvParameter) {
       // Get Current Time from RTC 
       localtime_r(&now, &timeinfo);
       strftime(strftime_buf, sizeof(strftime_buf), "%c", &timeinfo);
+      i2c_lcd1602_move_cursor(lcd_info, 0, 2);
+      i2c_lcd1602_write_string(lcd_info, strftime_buf);
+      i2c_lcd1602_move_cursor(lcd_info, 0, 1);
+      i2c_lcd1602_write_string(lcd_info, CONFIG_CITY);
       ESP_LOGI(TAG, "Got current date/time in %s: %s\n", CITY, strftime_buf);   
       vTaskDelay(500 / portTICK_PERIOD_MS);
     }

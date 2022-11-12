@@ -711,3 +711,10 @@ C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/net_ctlr/CMakeFiles/install.dir
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/net_ctlr/CMakeFiles/install/local.dir
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/net_ctlr/CMakeFiles/install/strip.dir
+C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/ntp_sync/CMakeFiles/__idf_ntp_sync.dir
+C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/ntp_sync/CMakeFiles/edit_cache.dir
+C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/ntp_sync/CMakeFiles/rebuild_cache.dir
+C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/ntp_sync/CMakeFiles/list_install_components.dir
+C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/ntp_sync/CMakeFiles/install.dir
+C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/ntp_sync/CMakeFiles/install/local.dir
+C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/ntp_sync/CMakeFiles/install/strip.dir
