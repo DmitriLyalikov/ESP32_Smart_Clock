@@ -49,14 +49,14 @@ menu "i2c-lcd1602 Configuration"
 
     config LCD_NUM_ROWS
         int "LCD Display Number of Rows"
-        default 2
+        default 4
 
     config LCD_NUM_COLUMNS
         int "LCD Display Number of Columns"
-        default 32
+        default 20
 
     config LCD_NUM_VISIBLE_COLUMNS
         int "LCD Display number of visible columns"
-        default 16
+        default 20
 
     endmenu

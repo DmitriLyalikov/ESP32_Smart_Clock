@@ -33,7 +33,19 @@ typedef struct
     uint8_t entry_mode_flags;                           ///< Currently active entry mode flags
 } i2c_lcd1602_info_t;
 
+// I2C Parameters 
+#define I2C_MASTER_FREQ_HZ      CONFIG_I2C_MASTER_FREQ_HZ
+#define I2C_MASTER_NUM          CONFIG_I2C_MASTER_NUM
+#define I2C_MASTER_NUM          CONFIG_I2C_MASTER_NUM
+#define I2C_MASTER_TX_BUF_LEN   CONFIG_I2C_MASTER_TX_BUF_LEN
+#define I2C_MASTER_RX_BUF_LEN   CONFIG_I2C_MASTER_RX_BUF_LEN
+#define I2C_MASTER_SCL_IO       CONFIG_I2C_MASTER_SCL
+#define I2C_MASTER_SDA_IO       CONFIG_I2C_MASTER_SDA
 
+#define LCD1602_I2C_ADDRESS     CONFIG_LCD1602_I2C_ADDRESS
+#define LCD_NUM_ROWS            CONFIG_LCD_NUM_ROWS
+#define LCD_NUM_COLUMNS         CONFIG_LCD_NUM_COLUMNS 
+#define LCD_NUM_VISIBLE_COLUMNS CONFIG_LCD_NUM_VISIBLE_COLUMNS
 // Special characters for ROM Code A00
 
 // Use the second set (0bxxxx1xxx) to avoid placing the null character within a string
