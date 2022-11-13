@@ -111,11 +111,14 @@ idf.py menuconfig
 ├── CMakeLists.txt
 ├── components                 Developer created component sources
     |──ble-config              Bluetooth/BLE configuration functions for controlling system settings at runtime
+    |──htttp                   Creates/Processes HTTP requests
     ├──i2c-lcd1602             Functions and resources to interact with an LCD display. 3rd party library (will not be tested)
+    |──jsmn                    Third Party lightweight JSON parser: https://github.com/zserge/jsmn
     ├──esp32-smbus             smbus/i2c driver that lcd requires. 3rd party library (will not be tested)
     ├──net_ctlr                event handler, wifi config, web request functions for networking functions (May be split up into further subcomponents)
     ├──ntp_sync                NTP-RTC functions for time synchronization
     ├──sys_resouce             Semaphores, queues, thread safe functions and types for task synchronization
+    ├──weather_sync            Request/Get/Parse/Send Weather Requests over HTTP 
 ├── main
 │   ├── CMakeLists.txt
 │   ├── component.mk    
