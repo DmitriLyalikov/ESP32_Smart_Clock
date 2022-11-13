@@ -117,8 +117,7 @@ idf.py menuconfig
     ├──esp32-smbus             smbus/i2c driver that lcd requires. 3rd party library (will not be tested)
     ├──net_ctlr                event handler, wifi config, web request functions for networking functions (May be split up into further subcomponents)
     ├──ntp_sync                NTP-RTC functions for time synchronization
-    ├──sys_resouce             Semaphores, queues, thread safe functions and types for task synchronization
-    ├──weather_sync            Request/Get/Parse/Send Weather Requests over HTTP 
+    ├──weather_sync            Request/Get/Parse/Send Weather Requests over HTTP with thread safe queue implementation between tasks/timers
 ├── main
 │   ├── CMakeLists.txt
 │   ├── component.mk    
