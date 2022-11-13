@@ -23,6 +23,7 @@
 #include "freertos/timers.h"
 #include "driver/i2c.h"
 
+#include "weather.h"
 #include "ntp_sync.h"
 #include "smbus.h"
 #include "i2c-lcd1602.h"

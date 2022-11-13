@@ -3,7 +3,7 @@
 #include "freertos/queue.h"
 
 /**
- * @brief Unit of transfer between queues
+ * @brief Unit of transfer for Weather Data from synchronization to queue
  * 
  * xTimeStamp: Timestamp 
  * ulValue: uint16_t payload data

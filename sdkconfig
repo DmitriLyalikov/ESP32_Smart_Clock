@@ -176,6 +176,17 @@ CONFIG_ESP_WIFI_AUTH_WPA2_PSK=y
 # end of WiFi-Component Configuration
 
 #
+# WiFi-Component Configuration
+#
+# end of WiFi-Component Configuration
+
+#
+# Open Weather API Configuration
+#
+CONFIG_OPENWEATHERMAP_API_KEY=""
+# end of Open Weather API Configuration
+
+#
 # Compiler options
 #
 CONFIG_COMPILER_OPTIMIZATION_DEFAULT=y

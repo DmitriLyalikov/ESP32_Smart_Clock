@@ -2349,6 +2349,152 @@
     {
         "children": [
             {
+                "children": [],
+                "depends_on": null,
+                "help": "SSID (network name) for the example to connect to.",
+                "id": "ESP_WIFI_SSID",
+                "name": "ESP_WIFI_SSID",
+                "range": null,
+                "title": "WiFi SSID",
+                "type": "string"
+            },
+            {
+                "children": [],
+                "depends_on": null,
+                "help": "WiFi password (WPA or WPA2) for the example to use.",
+                "id": "ESP_WIFI_PASSWORD",
+                "name": "ESP_WIFI_PASSWORD",
+                "range": null,
+                "title": "WiFi Password",
+                "type": "string"
+            },
+            {
+                "children": [],
+                "depends_on": null,
+                "help": "Set the Maximum retry to avoid station reconnecting to the AP unlimited when the AP is really inexistent.",
+                "id": "ESP_MAXIMUM_RETRY",
+                "name": "ESP_MAXIMUM_RETRY",
+                "range": null,
+                "title": "Maximum retry",
+                "type": "int"
+            },
+            {
+                "children": [
+                    {
+                        "children": [],
+                        "depends_on": "<choice ESP_WIFI_SCAN_AUTH_MODE_THRESHOLD>",
+                        "help": null,
+                        "id": "ESP_WIFI_AUTH_OPEN",
+                        "name": "ESP_WIFI_AUTH_OPEN",
+                        "range": null,
+                        "title": "OPEN",
+                        "type": "bool"
+                    },
+                    {
+                        "children": [],
+                        "depends_on": "<choice ESP_WIFI_SCAN_AUTH_MODE_THRESHOLD>",
+                        "help": null,
+                        "id": "ESP_WIFI_AUTH_WEP",
+                        "name": "ESP_WIFI_AUTH_WEP",
+                        "range": null,
+                        "title": "WEP",
+                        "type": "bool"
+                    },
+                    {
+                        "children": [],
+                        "depends_on": "<choice ESP_WIFI_SCAN_AUTH_MODE_THRESHOLD>",
+                        "help": null,
+                        "id": "ESP_WIFI_AUTH_WPA_PSK",
+                        "name": "ESP_WIFI_AUTH_WPA_PSK",
+                        "range": null,
+                        "title": "WPA PSK",
+                        "type": "bool"
+                    },
+                    {
+                        "children": [],
+                        "depends_on": "<choice ESP_WIFI_SCAN_AUTH_MODE_THRESHOLD>",
+                        "help": null,
+                        "id": "ESP_WIFI_AUTH_WPA2_PSK",
+                        "name": "ESP_WIFI_AUTH_WPA2_PSK",
+                        "range": null,
+                        "title": "WPA2 PSK",
+                        "type": "bool"
+                    },
+                    {
+                        "children": [],
+                        "depends_on": "<choice ESP_WIFI_SCAN_AUTH_MODE_THRESHOLD>",
+                        "help": null,
+                        "id": "ESP_WIFI_AUTH_WPA_WPA2_PSK",
+                        "name": "ESP_WIFI_AUTH_WPA_WPA2_PSK",
+                        "range": null,
+                        "title": "WPA/WPA2 PSK",
+                        "type": "bool"
+                    },
+                    {
+                        "children": [],
+                        "depends_on": "<choice ESP_WIFI_SCAN_AUTH_MODE_THRESHOLD>",
+                        "help": null,
+                        "id": "ESP_WIFI_AUTH_WPA3_PSK",
+                        "name": "ESP_WIFI_AUTH_WPA3_PSK",
+                        "range": null,
+                        "title": "WPA3 PSK",
+                        "type": "bool"
+                    },
+                    {
+                        "children": [],
+                        "depends_on": "<choice ESP_WIFI_SCAN_AUTH_MODE_THRESHOLD>",
+                        "help": null,
+                        "id": "ESP_WIFI_AUTH_WPA2_WPA3_PSK",
+                        "name": "ESP_WIFI_AUTH_WPA2_WPA3_PSK",
+                        "range": null,
+                        "title": "WPA2/WPA3 PSK",
+                        "type": "bool"
+                    },
+                    {
+                        "children": [],
+                        "depends_on": "<choice ESP_WIFI_SCAN_AUTH_MODE_THRESHOLD>",
+                        "help": null,
+                        "id": "ESP_WIFI_AUTH_WAPI_PSK",
+                        "name": "ESP_WIFI_AUTH_WAPI_PSK",
+                        "range": null,
+                        "title": "WAPI PSK",
+                        "type": "bool"
+                    }
+                ],
+                "depends_on": null,
+                "help": "The weakest authmode to accept in the scan mode.\nThis value defaults to ESP_WIFI_AUTH_WPA2_PSK incase password is present and ESP_WIFI_AUTH_OPEN is used.\nPlease select ESP_WIFI_AUTH_WEP/ESP_WIFI_AUTH_WPA_PSK incase AP is operating in WEP/WPA mode.",
+                "id": "wifi-component-configuration-wifi-scan-auth-mode-threshold",
+                "name": "ESP_WIFI_SCAN_AUTH_MODE_THRESHOLD",
+                "title": "WiFi Scan auth mode threshold",
+                "type": "choice"
+            }
+        ],
+        "depends_on": null,
+        "id": "wifi-component-configuration",
+        "title": "WiFi-Component Configuration",
+        "type": "menu"
+    },
+    {
+        "children": [
+            {
+                "children": [],
+                "depends_on": null,
+                "help": "OpenWeatherMap User API key. See project READMe.MD for instructions",
+                "id": "OPENWEATHERMAP_API_KEY",
+                "name": "OPENWEATHERMAP_API_KEY",
+                "range": null,
+                "title": "OpenWeatherMap User API key",
+                "type": "string"
+            }
+        ],
+        "depends_on": null,
+        "id": "open-weather-api-configuration",
+        "title": "Open Weather API Configuration",
+        "type": "menu"
+    },
+    {
+        "children": [
+            {
                 "children": [
                     {
                         "children": [],

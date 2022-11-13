@@ -1,0 +1,7 @@
+menu "Open Weather API Configuration"
+    config OPENWEATHERMAP_API_KEY
+        string "OpenWeatherMap User API key"
+        default ""
+        help
+            OpenWeatherMap User API key. See project READMe.MD for instructions
+    endmenu

@@ -667,6 +667,7 @@
     "OPENSSL_DEBUG": false,
     "OPENSSL_ERROR_STACK": true,
     "OPENTHREAD_ENABLED": false,
+    "OPENWEATHERMAP_API_KEY": "",
     "OTA_ALLOW_HTTP": false,
     "PARTITION_TABLE_CUSTOM": false,
     "PARTITION_TABLE_CUSTOM_FILENAME": "partitions.csv",

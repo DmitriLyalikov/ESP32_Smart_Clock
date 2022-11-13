@@ -3,6 +3,9 @@
     "files.associations": {
         "net_ctlr.h": "c",
         "sdkconfig.h": "c",
-        "ble_config.h": "c"
+        "ble_config.h": "c",
+        "i2c-lcd1602.h": "c",
+        "sys_resource.h": "c",
+        "ntp_sync.h": "c"
     }
 }
