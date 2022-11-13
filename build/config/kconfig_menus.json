@@ -2078,6 +2078,16 @@
                 "range": null,
                 "title": "NTP Resync Period",
                 "type": "int"
+            },
+            {
+                "children": [],
+                "depends_on": null,
+                "help": "Time between Weather remote resynchronization. (Seconds)",
+                "id": "WEATHER_RESYNC_PERIOD",
+                "name": "WEATHER_RESYNC_PERIOD",
+                "range": null,
+                "title": "WEATHER Resync Period",
+                "type": "int"
             }
         ],
         "depends_on": null,
@@ -2484,6 +2494,16 @@
                 "name": "OPENWEATHERMAP_API_KEY",
                 "range": null,
                 "title": "OpenWeatherMap User API key",
+                "type": "string"
+            },
+            {
+                "children": [],
+                "depends_on": null,
+                "help": "See https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes",
+                "id": "LOCATION_ID",
+                "name": "LOCATION_ID",
+                "range": null,
+                "title": "OpenWeatherMap API location code",
                 "type": "string"
             }
         ],

@@ -18,7 +18,7 @@ static const char* TAG = "Weather";
 #define WEB_SERVER "api.openweathermap.org"
 #define WEB_URL    "http://api.openweathermap.org/data/2.5/weather"
 // Location ID to get the weather data for
-#define LOCATION_ID "756135"
+#define LOCATION_ID CONFIG_LOCATION_ID
 
 // The API key below is configurable in menuconfig
 #define OPENWEATHERMAP_API_KEY CONFIG_OPENWEATHERMAP_API_KEY
@@ -142,12 +142,10 @@ static void disconnected(uint32_t *args)
     ESP_LOGD(TAG, "Free heap %u", xPortGetFreeHeapSize());
 }
 
-static void http_request_task(void *pvParameter) {
-    while(1) {
+void http_weather_request(void) {
 	http_client_request(&http_client, WEB_SERVER, get_request);
-	vTaskDelay(weather.retreival_period / portTICK_RATE_MS);
-    }
 }
+
 
 void on_weather_data_retrieval(weather_data_callback data_retreived_cb){
     weather.data_retreived_cb = data_retreived_cb;
@@ -159,5 +157,4 @@ void initialize_weather_data_retrieval(unsigned long retrieval_period) {
     http_client_on_process_chunk(&http_client, process_chunk);
     http_client_on_disconnected(&http_client, disconnected);
  
-    xTaskCreate(&http_request_task, "http_request_task", 2 * 2048, NULL, 5, NULL);
 }

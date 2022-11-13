@@ -135,8 +135,10 @@ CONFIG_PARTITION_TABLE_MD5=y
 #
 # Weather Clock Configuration
 #
-CONFIG_TIMEZONE="EST"
+CONFIG_TIMEZONE="EST5EDT,M3.2.0,M11.1.0"
 CONFIG_CITY="New York"
+CONFIG_NTP_RESYNC_PERIOD=14400
+CONFIG_WEATHER_RESYNC_PERIOD=14400
 # end of Weather Clock Configuration
 
 #
@@ -173,6 +175,18 @@ CONFIG_ESP_WIFI_AUTH_WPA2_PSK=y
 # CONFIG_ESP_WIFI_AUTH_WPA2_WPA3_PSK is not set
 # CONFIG_ESP_WIFI_AUTH_WAPI_PSK is not set
 # end of WiFi-Component Configuration
+
+#
+# WiFi-Component Configuration
+#
+# end of WiFi-Component Configuration
+
+#
+# Open Weather API Configuration
+#
+CONFIG_OPENWEATHERMAP_API_KEY=""
+CONFIG_CONFIG_LOCATION_ID="NY,US"
+# end of Open Weather API Configuration
 
 #
 # Compiler options

@@ -69,6 +69,7 @@ $<TARGET_FILE:__idf_perfmon>
 $<TARGET_FILE:__idf_spiffs>
 $<TARGET_FILE:__idf_ulp>
 $<TARGET_FILE:__idf_wifi_provisioning>
+$<TARGET_FILE:__idf_main>
 $<TARGET_FILE:__idf_ble_config>
 $<TARGET_FILE:__idf_esp32-smbus>
 $<TARGET_FILE:__idf_http>
@@ -77,4 +78,3 @@ $<TARGET_FILE:__idf_sys_resource>
 $<TARGET_FILE:__idf_net_ctlr>
 $<TARGET_FILE:__idf_ntp_sync>
 $<TARGET_FILE:__idf_weather_sync>
-$<TARGET_FILE:__idf_main>

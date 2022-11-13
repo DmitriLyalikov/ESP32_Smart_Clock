@@ -22,6 +22,7 @@ typedef struct {
 
 void on_weather_data_retrieval(weather_data_callback data_retreived_cb);
 void initialise_weather_data_retrieval(unsigned long retreival_period);
+void http_weather_request(void);
 
 #ifdef __cplusplus
 }

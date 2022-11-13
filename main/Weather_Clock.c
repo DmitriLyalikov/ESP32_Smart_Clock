@@ -31,9 +31,10 @@
 #include "net_ctlr.h"
 #include "ble_config.h"
 
-#define TIMEZONE          CONFIG_TIMEZONE
-#define CITY              CONFIG_CITY
-#define NTP_RESYNC_PERIOD CONFIG_NTP_RESYNC_PERIOD
+#define TIMEZONE              CONFIG_TIMEZONE
+#define CITY                  CONFIG_CITY
+#define NTP_RESYNC_PERIOD     CONFIG_NTP_RESYNC_PERIOD
+#define WEATHER_RESYNC_PERIOD CONFIG_NTP_RESYNC_PERIOD
 
 static const char* TAG = "Weather Clock";
 
@@ -134,6 +135,7 @@ void vTimeSync_Callback(TimerHandle_t xTimer) {
  */
 void vWeatherSync_Callback(TimerHandle_t xTimer) {
   ESP_LOGI(TAG, "Starting Weather Request...");
+  http_weather_request();
 }
 
 void app_main(void)
@@ -150,13 +152,21 @@ void app_main(void)
     wifi_init_sta();
     ntp_start();
     ntp_wait_for_sync();
-    xNTP_SYNC_TIMER= xTimerCreate("NTP Resync Timer",
+    xNTP_SYNC_TIMER = xTimerCreate("NTP Resync Timer",
                                   (NTP_RESYNC_PERIOD * 1000) / portTICK_PERIOD_MS,
                                   pdTRUE,
                                   ( void * ) 0,
                                   vTimeSync_Callback);
     if( xTimerStart(xNTP_SYNC_TIMER, 0 ) != pdPASS ) {
       ESP_LOGI(TAG, "Could not start xNTP_SYNC_TIMER");
+    }
+    xWEATHER_SYNC_TIMER = xTimerCreate("Weather Resync Timer",
+                                      (WEATHER_RESYNC_PERIOD * 1000) / portTICK_PERIOD_MS,
+                                      pdTRUE,
+                                      (void * ) 0,
+                                      vWeatherSync_Callback);
+    if( xTimerStart(xWEATHER_SYNC_TIMER, 0 ) != pdPASS ) {
+      ESP_LOGI(TAG, "Could not start xWEATHER_SYNC_TIMER");
     }
     xTaskCreatePinnedToCore(&vdisplay_task,
                             "xTask_Display",

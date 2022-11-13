@@ -669,6 +669,13 @@ C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/wifi_provisioning/CMakeFiles/install.dir
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/wifi_provisioning/CMakeFiles/install/local.dir
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/wifi_provisioning/CMakeFiles/install/strip.dir
+C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/main/CMakeFiles/__idf_main.dir
+C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/main/CMakeFiles/edit_cache.dir
+C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/main/CMakeFiles/rebuild_cache.dir
+C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/main/CMakeFiles/list_install_components.dir
+C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/main/CMakeFiles/install.dir
+C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/main/CMakeFiles/install/local.dir
+C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/main/CMakeFiles/install/strip.dir
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/ble_config/CMakeFiles/__idf_ble_config.dir
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/ble_config/CMakeFiles/edit_cache.dir
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/ble_config/CMakeFiles/rebuild_cache.dir
@@ -725,10 +732,3 @@ C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/weather_sync/CMakeFiles/install.dir
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/weather_sync/CMakeFiles/install/local.dir
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/weather_sync/CMakeFiles/install/strip.dir
-C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/main/CMakeFiles/__idf_main.dir
-C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/main/CMakeFiles/edit_cache.dir
-C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/main/CMakeFiles/rebuild_cache.dir
-C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/main/CMakeFiles/list_install_components.dir
-C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/main/CMakeFiles/install.dir
-C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/main/CMakeFiles/install/local.dir
-C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/build/esp-idf/main/CMakeFiles/install/strip.dir

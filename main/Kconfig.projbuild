@@ -15,4 +15,9 @@ menu "Weather Clock Configuration"
         default 14400
         help
             Time between NTP remote resynchronization. (Seconds)
+    config WEATHER_RESYNC_PERIOD
+        int "WEATHER Resync Period"
+        default 14400
+        help
+            Time between Weather remote resynchronization. (Seconds)   
     endmenu
