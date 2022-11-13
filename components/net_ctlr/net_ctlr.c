@@ -1,5 +1,4 @@
 #include "net_ctlr.h"
-#include "sys_resource.h"
 
 #include <string.h>
 #include "freertos/FreeRTOS.h"

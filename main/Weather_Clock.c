@@ -27,7 +27,6 @@
 #include "ntp_sync.h"
 #include "smbus.h"
 #include "i2c-lcd1602.h"
-#include "sys_resource.h"
 #include "net_ctlr.h"
 #include "ble_config.h"
 
@@ -135,7 +134,7 @@ void vTimeSync_Callback(TimerHandle_t xTimer) {
  */
 void vWeatherSync_Callback(TimerHandle_t xTimer) {
   ESP_LOGI(TAG, "Starting Weather Request...");
-  http_weather_request();
+  http_weather_request(xWeatherSyncQueue);
 }
 
 void app_main(void)
@@ -152,6 +151,7 @@ void app_main(void)
     wifi_init_sta();
     ntp_start();
     ntp_wait_for_sync();
+    xWeatherSyncQueue = vQueueInit();
     xNTP_SYNC_TIMER = xTimerCreate("NTP Resync Timer",
                                   (NTP_RESYNC_PERIOD * 1000) / portTICK_PERIOD_MS,
                                   pdTRUE,

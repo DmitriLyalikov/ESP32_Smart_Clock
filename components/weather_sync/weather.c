@@ -142,8 +142,9 @@ static void disconnected(uint32_t *args)
     ESP_LOGD(TAG, "Free heap %u", xPortGetFreeHeapSize());
 }
 
-void http_weather_request(void) {
+void http_weather_request(QueueHandle_t Weather_Queue) {
 	http_client_request(&http_client, WEB_SERVER, get_request);
+    vUpdateQueue(Weather_Queue, weather);
 }
 
 
@@ -156,5 +157,36 @@ void initialize_weather_data_retrieval(unsigned long retrieval_period) {
 
     http_client_on_process_chunk(&http_client, process_chunk);
     http_client_on_disconnected(&http_client, disconnected);
- 
+}
+
+
+/**
+ * @brief Initialize Mailbox Queue
+ * @returns QueueHandle_T: Handle to initialize queue  
+ */
+QueueHandle_t vQueueInit(void)
+{   
+    return xQueueCreate(1, sizeof(weather_data));
+}
+
+/**
+ * @brief Write a value to queue
+ * 
+ * @param Queue : queue handle of type QueueHandle_t
+ * @param ulNewValue : uin16_t value to write
+ */
+void vUpdateQueue(QueueHandle_t Queue, weather_data pxData)
+{
+    xQueueOverwrite(Queue, &pxData);
+}
+
+/**
+ * @brief Read queue and pop value read, 
+ * 
+ * @param pxData : Pointer to struct of type weather_data to read into
+ * @param Queue  : Queue handle of type QueueHandle_t to read from
+ */
+void vReadQueue(weather_data *pxData, QueueHandle_t Queue)
+{
+    xQueuePeek(Queue, pxData, portMAX_DELAY);
 }
