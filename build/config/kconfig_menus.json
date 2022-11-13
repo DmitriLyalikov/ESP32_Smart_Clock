@@ -2068,6 +2068,16 @@
                 "range": null,
                 "title": "WiFi Password",
                 "type": "string"
+            },
+            {
+                "children": [],
+                "depends_on": null,
+                "help": "Time between NTP remote resynchronization. (Seconds)",
+                "id": "NTP_RESYNC_PERIOD",
+                "name": "NTP_RESYNC_PERIOD",
+                "range": null,
+                "title": "NTP Resync Period",
+                "type": "int"
             }
         ],
         "depends_on": null,

@@ -20,6 +20,7 @@
 #include "sdkconfig.h"
 #include "esp_system.h"
 #include "freertos/FreeRTOS.h"
+#include "freertos/timers.h"
 #include "driver/i2c.h"
 
 #include "ntp_sync.h"
@@ -29,10 +30,12 @@
 #include "net_ctlr.h"
 #include "ble_config.h"
 
-#define TIMEZONE CONFIG_TIMEZONE
-#define CITY     CONFIG_CITY
+#define TIMEZONE          CONFIG_TIMEZONE
+#define CITY              CONFIG_CITY
+#define NTP_RESYNC_PERIOD CONFIG_NTP_RESYNC_PERIOD
 
 static const char* TAG = "Weather Clock";
+static TimerHandle_t xNTP_SYNC_TIMER;
 static SemaphoreHandle_t xTimeMutex;
 QueueHandle_t xTimeSyncQueue;
 
@@ -108,10 +111,11 @@ static void vdisplay_task(void *pvParameter) {
  *     Must be used after WiFI connection is established.
  *     
  * 
- * @param pvParameter 
+ * @param xTimerHandle
  */
-void vTimeSync_Task(void *pvParameter) {
-
+void vTimeSync_Callback(TimerHandle_t xTimer) {
+  ESP_LOGI(TAG, "Re-Synchronizing RTC time from NTP Server\n");
+  ntp_wait_for_sync();
 }
 
 void app_main(void)
@@ -128,6 +132,14 @@ void app_main(void)
     wifi_init_sta();
     ntp_start();
     ntp_wait_for_sync();
+    xNTP_SYNC_TIMER= xTimerCreate("NTP Resync Timer",
+                                  (NTP_RESYNC_PERIOD * 1000) / portTICK_PERIOD_MS,
+                                  pdTRUE,
+                                  ( void * ) 0,
+                                  vTimeSync_Callback);
+    if( xTimerStart(xNTP_SYNC_TIMER, 0 ) != pdPASS ) {
+      ESP_LOGI(TAG, "Could not start xNTP_SYNC_TIMER\n");
+    }
     xTaskCreatePinnedToCore(&vdisplay_task,
                             "xTask_Display",
                             3000,
