@@ -114,6 +114,7 @@ idf.py menuconfig
     ├──i2c-lcd1602             Functions and resources to interact with an LCD display. 3rd party library (will not be tested)
     ├──esp32-smbus             smbus/i2c driver that lcd requires. 3rd party library (will not be tested)
     ├──net_ctlr                event handler, wifi config, web request functions for networking functions (May be split up into further subcomponents)
+    ├──ntp_sync                NTP-RTC functions for time synchronization
     ├──sys_resouce             Semaphores, queues, thread safe functions and types for task synchronization
 ├── main
 │   ├── CMakeLists.txt
