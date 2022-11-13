@@ -91,6 +91,7 @@ static void vdisplay_task(void *pvParameter) {
     for (;;)
     {
       // Get Current Time from RTC 
+      now = time(NULL);
       localtime_r(&now, &timeinfo);
       strftime(strftime_buf, sizeof(strftime_buf), "%c", &timeinfo);
       i2c_lcd1602_move_cursor(lcd_info, 0, 2);
@@ -98,7 +99,7 @@ static void vdisplay_task(void *pvParameter) {
       i2c_lcd1602_move_cursor(lcd_info, 0, 1);
       i2c_lcd1602_write_string(lcd_info, CONFIG_CITY);
       ESP_LOGI(TAG, "Got current date/time in %s: %s\n", CITY, strftime_buf);   
-      vTaskDelay(500 / portTICK_PERIOD_MS);
+      vTaskDelay(1000 / portTICK_PERIOD_MS);
     }
 }
 
