@@ -2,6 +2,7 @@
     "idf.adapterTargetName": "esp32",
     "files.associations": {
         "net_ctlr.h": "c",
-        "sdkconfig.h": "c"
+        "sdkconfig.h": "c",
+        "ble_config.h": "c"
     }
 }

@@ -35,9 +35,12 @@
 #define NTP_RESYNC_PERIOD CONFIG_NTP_RESYNC_PERIOD
 
 static const char* TAG = "Weather Clock";
+
+// FreeRTOS Task Shared Resources
 static TimerHandle_t xNTP_SYNC_TIMER;
-static SemaphoreHandle_t xTimeMutex;
-QueueHandle_t xTimeSyncQueue;
+static TimerHandle_t xWEATHER_SYNC_TIMER;
+static SemaphoreHandle_t xWeatherMutex;
+static QueueHandle_t xWeatherSyncQueue;
 
 static void i2c_master_init(void)
 {
@@ -59,9 +62,12 @@ static void i2c_master_init(void)
 /**
  * @brief Display Task 
  * 
- * Low (1) Priority FreeRTOS Task that will block until mailbox is full 
+ * Low (1) Priority LCD Task
+ * Configure I2C, smbus, and lcd device
+ * Set time zone
+ * Updates time every second, and outputs to Display
  * 
- * 
+ * @todo setup weather_queue read to output weather data 
  */
 static void vdisplay_task(void *pvParameter) {
     i2c_master_init();
@@ -76,7 +82,7 @@ static void vdisplay_task(void *pvParameter) {
     // Set up the LCD1602 device with backlight off
     i2c_lcd1602_info_t * lcd_info = i2c_lcd1602_malloc();
     ESP_ERROR_CHECK(i2c_lcd1602_init(lcd_info, smbus_info, true,
-                                    LCD_NUM_ROWS, LCD_NUM_COLUMNS, LCD_NUM_VISIBLE_COLUMNS));
+                    LCD_NUM_ROWS, LCD_NUM_COLUMNS, LCD_NUM_VISIBLE_COLUMNS));
 
     ESP_ERROR_CHECK(i2c_lcd1602_reset(lcd_info));
 
@@ -101,21 +107,32 @@ static void vdisplay_task(void *pvParameter) {
       i2c_lcd1602_write_string(lcd_info, strftime_buf);
       i2c_lcd1602_move_cursor(lcd_info, 0, 1);
       i2c_lcd1602_write_string(lcd_info, CONFIG_CITY);
-      ESP_LOGI(TAG, "Got current date/time in %s: %s\n", CITY, strftime_buf);   
+      ESP_LOGI(TAG, "Got current date/time in %s: %s", CITY, strftime_buf);   
       vTaskDelay(1000 / portTICK_PERIOD_MS);
     }
 }
 
 /**
- * @brief NTP Synchronization Task 
+ * @brief NTP Synchronization Timer Callback
  *     Must be used after WiFI connection is established.
- *     
- * 
+ *     Syncs RTC clock time with ntp server
  * @param xTimerHandle
  */
 void vTimeSync_Callback(TimerHandle_t xTimer) {
   ESP_LOGI(TAG, "Re-Synchronizing RTC time from NTP Server\n");
   ntp_wait_for_sync();
+}
+
+/**
+ * @brief Thread-Safe Weather Synchronization Timer Callback
+ *      - Must be used after WiFI connection is established.
+ *      Sends Weather request to weather server api and processes JSON response
+ *      write Weather_Payload_t to xWeatherQueue mailbox 
+ * @param xTimerHandle
+ * @todo setup weather_queue read to output weather data 
+ */
+void vWeatherSync_Callback(TimerHandle_t xTimer) {
+  ESP_LOGI(TAG, "Starting Weather Request...");
 }
 
 void app_main(void)
@@ -128,7 +145,7 @@ void app_main(void)
     }
     ESP_ERROR_CHECK(ret);
     timezone_set(TIMEZONE);
-    ESP_LOGI(TAG, "********ESP32 Weather Clock Application********\n");
+    ESP_LOGI(TAG, "********ESP32 Weather Clock Application********");
     wifi_init_sta();
     ntp_start();
     ntp_wait_for_sync();
@@ -138,7 +155,7 @@ void app_main(void)
                                   ( void * ) 0,
                                   vTimeSync_Callback);
     if( xTimerStart(xNTP_SYNC_TIMER, 0 ) != pdPASS ) {
-      ESP_LOGI(TAG, "Could not start xNTP_SYNC_TIMER\n");
+      ESP_LOGI(TAG, "Could not start xNTP_SYNC_TIMER");
     }
     xTaskCreatePinnedToCore(&vdisplay_task,
                             "xTask_Display",
