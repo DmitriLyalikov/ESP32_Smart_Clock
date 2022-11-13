@@ -122,13 +122,11 @@ void app_main(void)
       ret = nvs_flash_init();
     }
     ESP_ERROR_CHECK(ret);
+    timezone_set(TIMEZONE);
     ESP_LOGI(TAG, "********ESP32 Weather Clock Application********\n");
-
-    ESP_LOGD(TAG, "%d\n", I2C_MASTER_FREQ_HZ );
-    ESP_LOGI(TAG, "%d\n", I2C_MASTER_SCL_IO );
-    ESP_LOGI(TAG, "%d\n", I2C_MASTER_SDA_IO );
-    ESP_LOGI(TAG, "%d\n", I2C_MASTER_NUM);
-    // wifi_init_sta();
+    wifi_init_sta();
+    ntp_start();
+    ntp_wait_for_sync();
     xTaskCreatePinnedToCore(&vdisplay_task,
                             "xTask_Display",
                             3000,

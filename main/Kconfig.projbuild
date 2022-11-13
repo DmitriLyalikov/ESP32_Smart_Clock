@@ -1,7 +1,7 @@
 menu "Weather Clock Configuration"
     config TIMEZONE
         string "Clock Time Zone"
-        default "EST"
+        default "EST5EDT,M3.2.0,M11.1.0"
         help
             Time Zone of desired region
 

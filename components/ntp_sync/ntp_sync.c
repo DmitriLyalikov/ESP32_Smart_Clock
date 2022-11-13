@@ -23,7 +23,7 @@ void timezone_set(const char *timezone)
 void ntp_start()
 {
 	sntp_setoperatingmode(SNTP_OPMODE_POLL);
-	sntp_setservername(0, "pool.ntp.org");
+	sntp_setservername(0, "us.pool.ntp.org");
 	sntp_set_sync_mode(SNTP_SYNC_MODE_IMMED);
 	sntp_init();
 }
