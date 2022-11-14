@@ -2,6 +2,8 @@
 This is my Embedded Systems Design Semester Project. I am using the ESP32 platform to make a LCD digital clock that displays time synchronised from an NTP server and current weather forecasts from a HTTP based weather API. 
 
 This repository contains all the subcomponents, design files, and source code for this system. It is designed to work out 'of the box'. 
+
+![worker - Copy](https://user-images.githubusercontent.com/68623356/201678676-a6d2dc4b-1acb-4f93-8fe1-0015e3a3bf09.jpeg)
 ### Demonstration Hardware 
 * ESP32-DevKitC-V4 (ESP32 Based evaluation board)
 * LCD 2004            ( 4x16 LCD)
