@@ -1,9 +1,18 @@
+/**
+ * @file weather.c
+ * @author Dmitri Lyalikov (Dlyalikov01@manhattan.edu)
+ * @brief  Weather Request functions between HTTP request and Display Queue
+ * @version 0.1
+ * @date 2022-11-14
+ * 
+ * @copyright Copyright (c) 2022
+ */
+
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "esp_system.h"
 #include "freertos/semphr.h"
 #include "esp_log.h"
-
 
 #include <stdio.h>
 #include <string.h>
@@ -74,7 +83,6 @@ static bool process_response_body(const char * body) {
         -Temperature,
         -Pressure,
         in HTTP response body that happens to be a JSON string
-
         Return true if phrasing was successful or false otherwise
     */
     
@@ -189,6 +197,7 @@ QueueHandle_t vQueueInit(void)
  * 
  * @param Queue : queue handle of type QueueHandle_t
  * @param ulNewValue : uin16_t value to write
+ * @param mutex  : Mutex handle to take and give for each task to use
  */
 void vUpdateQueue(QueueHandle_t Queue, weather_data pxData, SemaphoreHandle_t mutex)
 {
@@ -202,6 +211,7 @@ void vUpdateQueue(QueueHandle_t Queue, weather_data pxData, SemaphoreHandle_t mu
  * 
  * @param pxData : Pointer to struct of type weather_data to read into
  * @param Queue  : Queue handle of type QueueHandle_t to read from
+ * @param mutex  : Mutex handle to take and give for each task to use
  */
 void vReadQueue(weather_data *pxData, QueueHandle_t Queue, SemaphoreHandle_t mutex)
 {

@@ -1,3 +1,13 @@
+/**
+ * @file weather.h
+ * @author Dmitri Lyalikov (Dlyalikov01@manhattan.edu)
+ * @brief  Weather Request functions between HTTP request and Display Queue
+ * @version 0.1
+ * @date 2022-11-14
+ * 
+ * @copyright Copyright (c) 2022
+ */
+
 #ifndef WEATHER_H
 #define WEATHER_H
 
