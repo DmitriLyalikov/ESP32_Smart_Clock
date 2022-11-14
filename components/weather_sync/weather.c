@@ -1,7 +1,9 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "esp_system.h"
+#include "freertos/semphr.h"
 #include "esp_log.h"
+
 
 #include <stdio.h>
 #include <string.h>
@@ -150,14 +152,14 @@ static void disconnected(uint32_t *args)
     ESP_LOGD(TAG, "Free heap %u", xPortGetFreeHeapSize());
 }
 
-void http_weather_request(QueueHandle_t Weather_Queue) {
+void http_weather_request(QueueHandle_t Weather_Queue, SemaphoreHandle_t mutex) {
 	http_client_request(&http_client, WEB_SERVER, get_request);
     vTaskDelay(1000 / portTICK_PERIOD_MS);
     printf("%d\n", weather.humidity);
     printf("%f\n", weather.temperature);
     printf("%f\n", weather.pressure);
     printf("%s\n", weather.description);
-    vUpdateQueue(Weather_Queue, weather);
+    vUpdateQueue(Weather_Queue, weather, mutex);
 }
 
 
@@ -188,9 +190,11 @@ QueueHandle_t vQueueInit(void)
  * @param Queue : queue handle of type QueueHandle_t
  * @param ulNewValue : uin16_t value to write
  */
-void vUpdateQueue(QueueHandle_t Queue, weather_data pxData)
+void vUpdateQueue(QueueHandle_t Queue, weather_data pxData, SemaphoreHandle_t mutex)
 {
+    xSemaphoreTake(mutex, pdMS_TO_TICKS(100));
     xQueueOverwrite(Queue, &pxData);
+    xSemaphoreGive(mutex);
 }
 
 /**
@@ -199,7 +203,9 @@ void vUpdateQueue(QueueHandle_t Queue, weather_data pxData)
  * @param pxData : Pointer to struct of type weather_data to read into
  * @param Queue  : Queue handle of type QueueHandle_t to read from
  */
-void vReadQueue(weather_data *pxData, QueueHandle_t Queue)
+void vReadQueue(weather_data *pxData, QueueHandle_t Queue, SemaphoreHandle_t mutex)
 {
-    xQueuePeek(Queue, pxData, portMAX_DELAY);
+    xSemaphoreTake(mutex, pdMS_TO_TICKS(5));
+    xQueuePeek(Queue, pxData,  pdMS_TO_TICKS(5));
+    xSemaphoreGive(mutex);
 }

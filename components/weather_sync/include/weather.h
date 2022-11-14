@@ -3,8 +3,10 @@
 
 #include "esp_err.h"
 #include "freertos/FreeRTOS.h"
+#include "freertos/semphr.h"
 #include "freertos/task.h"
 #include "freertos/queue.h"
+
 
 #ifdef __cplusplus
 extern "C" {
@@ -26,7 +28,7 @@ typedef struct weather_data {
 
 void on_weather_data_retrieval(weather_data_callback data_retreived_cb);
 void initialise_weather_data_retrieval(unsigned long retreival_period);
-void http_weather_request(QueueHandle_t Weather_Queue);
+void http_weather_request(QueueHandle_t Weather_Queue, SemaphoreHandle_t mutex);
 
 /**
  * @brief Initialize Mailbox Queue
@@ -40,7 +42,7 @@ QueueHandle_t vQueueInit(void);
  * @param Queue : queue handle of type QueueHandle_t
  * @param ulNewValue : uin16_t value to write
  */
-void vUpdateQueue(QueueHandle_t Queue, weather_data pxData);
+void vUpdateQueue(QueueHandle_t Queue, weather_data pxData, SemaphoreHandle_t mutex);
 
 
 /**
@@ -49,7 +51,7 @@ void vUpdateQueue(QueueHandle_t Queue, weather_data pxData);
  * @param pxData : Pointer to struct of type weather_data to read into
  * @param Queue  : Queue handle of type QueueHandle_t to read from
  */
-void vReadQueue(weather_data *pxData, QueueHandle_t Queue);
+void vReadQueue(weather_data *pxData, QueueHandle_t Queue, SemaphoreHandle_t mutex);
 
 
 

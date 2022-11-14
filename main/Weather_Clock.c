@@ -20,6 +20,7 @@
 #include "sdkconfig.h"
 #include "esp_system.h"
 #include "freertos/FreeRTOS.h"
+#include "freertos/semphr.h"
 #include "freertos/timers.h"
 #include "driver/i2c.h"
 
@@ -92,7 +93,7 @@ static void vdisplay_task(void *pvParameter) {
     i2c_lcd1602_write_string(lcd_info, CONFIG_CITY);
      
     weather_data weather_now;
-    vReadQueue(&weather_now, xWeatherSyncQueue);
+    vReadQueue(&weather_now, xWeatherSyncQueue, xWeatherMutex);
     char float_read[50];
     time_t now;
     char strftime_buf[64];
@@ -105,8 +106,11 @@ static void vdisplay_task(void *pvParameter) {
     {
       // Get Current Time from RTC 
       now = time(NULL);
+      vReadQueue(&weather_now, xWeatherSyncQueue, xWeatherMutex);
+
       localtime_r(&now, &timeinfo);
       strftime(strftime_buf, sizeof(strftime_buf), "%c", &timeinfo);
+
       i2c_lcd1602_move_cursor(lcd_info, 0, 2);
       i2c_lcd1602_write_string(lcd_info, strftime_buf);
       i2c_lcd1602_move_cursor(lcd_info, 0, 1);
@@ -120,7 +124,7 @@ static void vdisplay_task(void *pvParameter) {
       sprintf(float_read, "%d", (int)weather_now.temperature);
       i2c_lcd1602_write_string(lcd_info, float_read);
       i2c_lcd1602_write_char(lcd_info, I2C_LCD1602_CHARACTER_DEGREE);
-      vTaskDelay(1000 / portTICK_PERIOD_MS);
+      vTaskDelay(900 / portTICK_PERIOD_MS);
     }
 }
 
@@ -145,9 +149,16 @@ void vTimeSync_Callback(TimerHandle_t xTimer) {
  */
 void vWeatherSync_Callback(TimerHandle_t xTimer) {
   ESP_LOGI(TAG, "Starting Weather Request...");
-  http_weather_request(xWeatherSyncQueue);
+  http_weather_request(xWeatherSyncQueue, xWeatherMutex);
 }
 
+/**
+ * @brief Entry Point to Application
+ *      Display task is very active and resource needy, so it is put on Core 1
+ *      Software timers: xNTP_SYNC_TIMER and WEATHER_SYNC_TIMER are on Core 0,
+ *        they do not fire often and can generally be neglected
+ *      Networking functionality is kept on core 0
+ */
 void app_main(void)
 {
     //Initialize NVS
@@ -162,6 +173,7 @@ void app_main(void)
     wifi_init_sta();
     ntp_start();
     ntp_wait_for_sync();
+    xWeatherMutex = xSemaphoreCreateMutex();
     xWeatherSyncQueue = vQueueInit();
     xNTP_SYNC_TIMER = xTimerCreate("NTP Resync Timer",
                                   (NTP_RESYNC_PERIOD * 1000) / portTICK_PERIOD_MS,
@@ -173,7 +185,7 @@ void app_main(void)
     }
     ESP_LOGI(TAG, "Starting Weather Request...");
     initialise_weather_data_retrieval(WEATHER_RESYNC_PERIOD);
-    http_weather_request(xWeatherSyncQueue);
+    http_weather_request(xWeatherSyncQueue, xWeatherMutex);
     xWEATHER_SYNC_TIMER = xTimerCreate("Weather Resync Timer",
                                       (WEATHER_RESYNC_PERIOD * 1000) / portTICK_PERIOD_MS,
                                       pdTRUE,
