@@ -12,10 +12,11 @@ extern "C" {
 
 typedef void (*weather_data_callback)(uint32_t *args);
 
-typedef struct {
+typedef struct weather_data {
     unsigned int humidity;
     float temperature;
     float pressure;
+    char description[12];
     unsigned long retreival_period;
     weather_data_callback data_retreived_cb;
 } weather_data;

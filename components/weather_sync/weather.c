@@ -18,12 +18,12 @@ static const char* TAG = "Weather";
 #define WEB_SERVER "api.openweathermap.org"
 #define WEB_URL    "http://api.openweathermap.org/data/2.5/weather"
 // Location ID to get the weather data for
-#define LOCATION_ID CONFIG_LOCATION_ID
-
+#define LOCATION_ID "5125771"
 // The API key below is configurable in menuconfig
-#define OPENWEATHERMAP_API_KEY CONFIG_OPENWEATHERMAP_API_KEY
+// #define OPENWEATHERMAP_API_KEY CONFIG_OPENWEATHERMAP_API_KEY
+#define OPENWEATHERMAP_API_KEY "ff31bb7619bd70b4120320c735e6afa6"
 
-static const char *get_request = "GET " WEB_URL"?id="LOCATION_ID"&appid="OPENWEATHERMAP_API_KEY" HTTP/1.1\n"
+static const char *get_request = "GET " WEB_URL"?id="LOCATION_ID"&units=metric&appid="OPENWEATHERMAP_API_KEY" HTTP/1.1\n"
     "Host: "WEB_SERVER"\n"
     "Connection: close\n"
     "User-Agent: esp-idf/1.0 esp32\n"
@@ -112,6 +112,14 @@ static bool process_response_body(const char * body) {
 		weather.pressure = atof(subbuff);
 		i++;
 	     }
+         else if (jsoneq(body, &t[i], "description") == 0) {
+		 str_length = t[i+1].end - t[i+1].start;
+		 memcpy(subbuff, body + t[i+1].start, str_length);
+	           subbuff[str_length] = '\0';
+         strncpy(weather.description, subbuff, 12);
+         
+		 i++;
+	     }
 	}
 	return true;
     }
@@ -144,6 +152,11 @@ static void disconnected(uint32_t *args)
 
 void http_weather_request(QueueHandle_t Weather_Queue) {
 	http_client_request(&http_client, WEB_SERVER, get_request);
+    vTaskDelay(1000 / portTICK_PERIOD_MS);
+    printf("%d\n", weather.humidity);
+    printf("%f\n", weather.temperature);
+    printf("%f\n", weather.pressure);
+    printf("%s\n", weather.description);
     vUpdateQueue(Weather_Queue, weather);
 }
 
@@ -152,7 +165,7 @@ void on_weather_data_retrieval(weather_data_callback data_retreived_cb){
     weather.data_retreived_cb = data_retreived_cb;
 }
 
-void initialize_weather_data_retrieval(unsigned long retrieval_period) {
+void initialise_weather_data_retrieval(unsigned long retrieval_period) {
     weather.retreival_period = retrieval_period;
 
     http_client_on_process_chunk(&http_client, process_chunk);

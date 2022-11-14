@@ -90,7 +90,10 @@ static void vdisplay_task(void *pvParameter) {
     i2c_lcd1602_write_string(lcd_info, "    Hello Dmitri");
     i2c_lcd1602_move_cursor(lcd_info, 0, 1);
     i2c_lcd1602_write_string(lcd_info, CONFIG_CITY);
-
+     
+    weather_data weather_now;
+    vReadQueue(&weather_now, xWeatherSyncQueue);
+    char float_read[50];
     time_t now;
     char strftime_buf[64];
     struct tm timeinfo;
@@ -108,7 +111,15 @@ static void vdisplay_task(void *pvParameter) {
       i2c_lcd1602_write_string(lcd_info, strftime_buf);
       i2c_lcd1602_move_cursor(lcd_info, 0, 1);
       i2c_lcd1602_write_string(lcd_info, CONFIG_CITY);
+      i2c_lcd1602_move_cursor(lcd_info, sizeof(CONFIG_CITY), 1);
+      i2c_lcd1602_write_string(lcd_info, weather_now.description);
       ESP_LOGI(TAG, "Got current date/time in %s: %s", CITY, strftime_buf);   
+      i2c_lcd1602_move_cursor(lcd_info, 0, 3);
+      i2c_lcd1602_write_string(lcd_info, "Temp(C):");
+      i2c_lcd1602_move_cursor(lcd_info, 8, 3);
+      sprintf(float_read, "%d", (int)weather_now.temperature);
+      i2c_lcd1602_write_string(lcd_info, float_read);
+      i2c_lcd1602_write_char(lcd_info, I2C_LCD1602_CHARACTER_DEGREE);
       vTaskDelay(1000 / portTICK_PERIOD_MS);
     }
 }
@@ -160,6 +171,9 @@ void app_main(void)
     if( xTimerStart(xNTP_SYNC_TIMER, 0 ) != pdPASS ) {
       ESP_LOGI(TAG, "Could not start xNTP_SYNC_TIMER");
     }
+    ESP_LOGI(TAG, "Starting Weather Request...");
+    initialise_weather_data_retrieval(WEATHER_RESYNC_PERIOD);
+    http_weather_request(xWeatherSyncQueue);
     xWEATHER_SYNC_TIMER = xTimerCreate("Weather Resync Timer",
                                       (WEATHER_RESYNC_PERIOD * 1000) / portTICK_PERIOD_MS,
                                       pdTRUE,
