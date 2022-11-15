@@ -1,5 +1,5 @@
 # ESP32 Smart Clock 
-This is my Embedded Systems Design Semester Project. I am using the ESP32 platform to make a LCD digital clock that displays time synchronised from an NTP server and current weather forecasts from a HTTP based weather API. 
+This is my Embedded Systems Design Semester Project. I am using the ESP32 platform to make a LCD digital clock that displays local time synchronised from an NTP server and local/current weather forecasts from a JSON weather API endpoint over HTTP. 
 
 This repository contains all the subcomponents, design files, and source code for this system. It is designed to work out 'of the box'. 
 
