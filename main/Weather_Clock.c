@@ -99,6 +99,16 @@ static void vdisplay_task(void *pvParameter) {
     time(&now);
     setenv("TZ", TIMEZONE, 1);
     tzset();
+    i2c_lcd1602_move_cursor(lcd_info, 0, 1);
+    i2c_lcd1602_write_string(lcd_info, CONFIG_CITY);
+    i2c_lcd1602_move_cursor(lcd_info, sizeof(CONFIG_CITY), 1);
+    i2c_lcd1602_write_string(lcd_info, weather_now.description);
+    i2c_lcd1602_move_cursor(lcd_info, 0, 3);
+    i2c_lcd1602_write_string(lcd_info, "Temp(C):");
+    i2c_lcd1602_move_cursor(lcd_info, 8, 3);
+    sprintf(float_read, "%d", (int)weather_now.temperature);
+    i2c_lcd1602_write_string(lcd_info, float_read);
+    i2c_lcd1602_write_char(lcd_info, I2C_LCD1602_CHARACTER_DEGREE);
     for (;;)
     {
       // Get Current Time from RTC 
@@ -107,6 +117,14 @@ static void vdisplay_task(void *pvParameter) {
       ulWeatherReady = ulTaskNotifyTake(pdTRUE, 0);
       if (ulWeatherReady) {
           vReadQueue(&weather_now, xWeatherSyncQueue);
+          i2c_lcd1602_move_cursor(lcd_info, sizeof(CONFIG_CITY), 1);
+          i2c_lcd1602_write_string(lcd_info, weather_now.description);
+          i2c_lcd1602_move_cursor(lcd_info, 0, 3);
+          i2c_lcd1602_write_string(lcd_info, "Temp(C):");
+          i2c_lcd1602_move_cursor(lcd_info, 8, 3);
+          sprintf(float_read, "%d", (int)weather_now.temperature);
+          i2c_lcd1602_write_string(lcd_info, float_read);
+          i2c_lcd1602_write_char(lcd_info, I2C_LCD1602_CHARACTER_DEGREE);
       }
 
       localtime_r(&now, &timeinfo);
@@ -114,17 +132,9 @@ static void vdisplay_task(void *pvParameter) {
 
       i2c_lcd1602_move_cursor(lcd_info, 0, 2);
       i2c_lcd1602_write_string(lcd_info, strftime_buf);
+      ESP_LOGI(TAG, "Got current date/time in %s: %s", CITY, strftime_buf);   
       i2c_lcd1602_move_cursor(lcd_info, 0, 1);
       i2c_lcd1602_write_string(lcd_info, CONFIG_CITY);
-      i2c_lcd1602_move_cursor(lcd_info, sizeof(CONFIG_CITY), 1);
-      i2c_lcd1602_write_string(lcd_info, weather_now.description);
-      ESP_LOGI(TAG, "Got current date/time in %s: %s", CITY, strftime_buf);   
-      i2c_lcd1602_move_cursor(lcd_info, 0, 3);
-      i2c_lcd1602_write_string(lcd_info, "Temp(C):");
-      i2c_lcd1602_move_cursor(lcd_info, 8, 3);
-      sprintf(float_read, "%d", (int)weather_now.temperature);
-      i2c_lcd1602_write_string(lcd_info, float_read);
-      i2c_lcd1602_write_char(lcd_info, I2C_LCD1602_CHARACTER_DEGREE);
       vTaskDelay(100 / portTICK_PERIOD_MS);
     }
 }
