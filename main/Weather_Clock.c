@@ -212,7 +212,7 @@ void app_main(void)
     // Start display task on Core 1
     xTaskCreatePinnedToCore(&vdisplay_task,
                             "xTask_Display",
-                            3000,
+                            2048,
                             NULL,
                             1, 
                             NULL,
