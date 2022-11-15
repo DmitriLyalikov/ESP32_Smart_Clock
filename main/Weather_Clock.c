@@ -125,7 +125,7 @@ static void vdisplay_task(void *pvParameter) {
       sprintf(float_read, "%d", (int)weather_now.temperature);
       i2c_lcd1602_write_string(lcd_info, float_read);
       i2c_lcd1602_write_char(lcd_info, I2C_LCD1602_CHARACTER_DEGREE);
-      vTaskDelay(500 / portTICK_PERIOD_MS);
+      vTaskDelay(100 / portTICK_PERIOD_MS);
     }
 }
 
