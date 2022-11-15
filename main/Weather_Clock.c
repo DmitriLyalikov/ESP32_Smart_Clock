@@ -20,7 +20,7 @@
 #include "sdkconfig.h"
 #include "esp_system.h"
 #include "freertos/FreeRTOS.h"
-#include "freertos/semphr.h"
+#include "freertos/task.h"
 #include "freertos/timers.h"
 #include "driver/i2c.h"
 
@@ -41,7 +41,6 @@ static const char* TAG = "Weather Clock";
 // FreeRTOS Task Shared Resources
 static TimerHandle_t xNTP_SYNC_TIMER;
 static TimerHandle_t xWEATHER_SYNC_TIMER;
-static SemaphoreHandle_t xWeatherMutex;
 static QueueHandle_t xWeatherSyncQueue;
 
 static void i2c_master_init(void)
@@ -93,7 +92,8 @@ static void vdisplay_task(void *pvParameter) {
     i2c_lcd1602_write_string(lcd_info, CONFIG_CITY);
      
     weather_data weather_now;
-    vReadQueue(&weather_now, xWeatherSyncQueue, xWeatherMutex);
+    uint32_t ulWeatherReady;
+    vReadQueue(&weather_now, xWeatherSyncQueue);
     char float_read[50];
     time_t now;
     char strftime_buf[64];
@@ -106,8 +106,11 @@ static void vdisplay_task(void *pvParameter) {
     {
       // Get Current Time from RTC 
       now = time(NULL);
-      vReadQueue(&weather_now, xWeatherSyncQueue, xWeatherMutex);
-
+      // Non-Blocking check if new Weather data is ready 
+      ulWeatherReady = ulTaskNotifyTake(pdTRUE, 0);
+      if (ulWeatherReady) {
+          vReadQueue(&weather_now, xWeatherSyncQueue);
+      }
       localtime_r(&now, &timeinfo);
       strftime(strftime_buf, sizeof(strftime_buf), "%c", &timeinfo);
 
@@ -124,7 +127,7 @@ static void vdisplay_task(void *pvParameter) {
       sprintf(float_read, "%d", (int)weather_now.temperature);
       i2c_lcd1602_write_string(lcd_info, float_read);
       i2c_lcd1602_write_char(lcd_info, I2C_LCD1602_CHARACTER_DEGREE);
-      vTaskDelay(900 / portTICK_PERIOD_MS);
+      vTaskDelay(500 / portTICK_PERIOD_MS);
     }
 }
 
@@ -149,7 +152,8 @@ void vTimeSync_Callback(TimerHandle_t xTimer) {
  */
 void vWeatherSync_Callback(TimerHandle_t xTimer) {
   ESP_LOGI(TAG, "Starting Weather Request...");
-  http_weather_request(xWeatherSyncQueue, xWeatherMutex);
+  http_weather_request(xWeatherSyncQueue);
+  xTaskNotifyGive(vdisplay_task);
 }
 
 /**
@@ -173,7 +177,7 @@ void app_main(void)
     wifi_init_sta();
     ntp_start();
     ntp_wait_for_sync();
-    xWeatherMutex = xSemaphoreCreateMutex();
+    
     xWeatherSyncQueue = vQueueInit();
     xNTP_SYNC_TIMER = xTimerCreate("NTP Resync Timer",
                                   (NTP_RESYNC_PERIOD * 1000) / portTICK_PERIOD_MS,
@@ -185,7 +189,7 @@ void app_main(void)
     }
     ESP_LOGI(TAG, "Starting Weather Request...");
     initialise_weather_data_retrieval(WEATHER_RESYNC_PERIOD);
-    http_weather_request(xWeatherSyncQueue, xWeatherMutex);
+    http_weather_request(xWeatherSyncQueue);
     xWEATHER_SYNC_TIMER = xTimerCreate("Weather Resync Timer",
                                       (WEATHER_RESYNC_PERIOD * 1000) / portTICK_PERIOD_MS,
                                       pdTRUE,

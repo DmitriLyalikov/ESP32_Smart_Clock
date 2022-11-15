@@ -1,5 +1,5 @@
 /**
- * @file net_ctlr.c
+ * @file net_ctlr.h
  * @author Dmitri Lyalikov
  * @brief  WiFi setup and authenticate/connect as Stations with event handler registered
  * @version 0.1

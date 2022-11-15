@@ -160,14 +160,14 @@ static void disconnected(uint32_t *args)
     ESP_LOGD(TAG, "Free heap %u", xPortGetFreeHeapSize());
 }
 
-void http_weather_request(QueueHandle_t Weather_Queue, SemaphoreHandle_t mutex) {
+void http_weather_request(QueueHandle_t Weather_Queue) {
 	http_client_request(&http_client, WEB_SERVER, get_request);
     vTaskDelay(1000 / portTICK_PERIOD_MS);
     printf("%d\n", weather.humidity);
     printf("%f\n", weather.temperature);
     printf("%f\n", weather.pressure);
     printf("%s\n", weather.description);
-    vUpdateQueue(Weather_Queue, weather, mutex);
+    vUpdateQueue(Weather_Queue, weather);
 }
 
 
@@ -197,13 +197,10 @@ QueueHandle_t vQueueInit(void)
  * 
  * @param Queue : queue handle of type QueueHandle_t
  * @param ulNewValue : uin16_t value to write
- * @param mutex  : Mutex handle to take and give for each task to use
  */
-void vUpdateQueue(QueueHandle_t Queue, weather_data pxData, SemaphoreHandle_t mutex)
+void vUpdateQueue(QueueHandle_t Queue, weather_data pxData)
 {
-    xSemaphoreTake(mutex, pdMS_TO_TICKS(100));
     xQueueOverwrite(Queue, &pxData);
-    xSemaphoreGive(mutex);
 }
 
 /**
@@ -211,11 +208,8 @@ void vUpdateQueue(QueueHandle_t Queue, weather_data pxData, SemaphoreHandle_t mu
  * 
  * @param pxData : Pointer to struct of type weather_data to read into
  * @param Queue  : Queue handle of type QueueHandle_t to read from
- * @param mutex  : Mutex handle to take and give for each task to use
  */
-void vReadQueue(weather_data *pxData, QueueHandle_t Queue, SemaphoreHandle_t mutex)
+void vReadQueue(weather_data *pxData, QueueHandle_t Queue)
 {
-    xSemaphoreTake(mutex, pdMS_TO_TICKS(5));
-    xQueuePeek(Queue, pxData,  pdMS_TO_TICKS(5));
-    xSemaphoreGive(mutex);
+    xQueuePeek(Queue, pxData,  pdMS_TO_TICKS(100));
 }
