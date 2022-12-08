@@ -72,6 +72,8 @@ C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/test/build/es
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/test/build/esp-idf/main/libmain.a
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/test/build/esp-idf/ble_config/libble_config.a
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/test/build/esp-idf/esp32-smbus/libesp32-smbus.a
+C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/test/build/esp-idf/http/libhttp.a
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/test/build/esp-idf/i2c-lcd1602/libi2c-lcd1602.a
-C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/test/build/esp-idf/sys_resource/libsys_resource.a
 C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/test/build/esp-idf/net_ctlr/libnet_ctlr.a
+C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/test/build/esp-idf/ntp_sync/libntp_sync.a
+C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/test/build/esp-idf/weather_sync/libweather_sync.a

@@ -2,7 +2,7 @@
  * @file Weather_Clock.c
  * @author Dmitri Lyalikov (Dlyalikov01@manhattan.edu)
  * @brief  Entry Point to ESP32 Weather Clock Application for EECE 321 Final Project 
- * @version 0.1
+ * @version 1.2
  * @date 2022-11-14
  */
 

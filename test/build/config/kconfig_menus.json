@@ -2112,8 +2112,8 @@
                 "children": [],
                 "depends_on": null,
                 "help": "GPIO number (IOxx) for I2C SCL.\n\nSome GPIOs are used for other purposes (flash connections, etc.) and cannot be used.\n\nGPIOs 35-39 are input-only so cannot be used to drive the One Wire Bus.",
-                "id": "I2C_MASTER_SCL",
-                "name": "I2C_MASTER_SCL",
+                "id": "I2C_MASTER_SCL_IO",
+                "name": "I2C_MASTER_SCL_IO",
                 "range": [
                     0,
                     34
@@ -2125,8 +2125,8 @@
                 "children": [],
                 "depends_on": null,
                 "help": "GPIO number (IOxx) for I2C SDA.\n\nSome GPIOs are used for other purposes (flash connections, etc.) and cannot be used.\n\nGPIOs 35-39 are input-only so cannot be used to drive the One Wire Bus.",
-                "id": "I2C_MASTER_SDA",
-                "name": "I2C_MASTER_SDA",
+                "id": "I2C_MASTER_SDA_IO",
+                "name": "I2C_MASTER_SDA_IO",
                 "range": [
                     0,
                     34
@@ -2137,7 +2137,7 @@
             {
                 "children": [],
                 "depends_on": null,
-                "help": "I2C address for HD44780-compatible LCD1602 device",
+                "help": "I2C address for HD44780-compatible LCD1602 device, LCD2004-0x3F, LCD1602-0x27",
                 "id": "LCD1602_I2C_ADDRESS",
                 "name": "LCD1602_I2C_ADDRESS",
                 "range": null,
@@ -2306,6 +2306,34 @@
         "depends_on": null,
         "id": "wifi-component-configuration",
         "title": "WiFi-Component Configuration",
+        "type": "menu"
+    },
+    {
+        "children": [
+            {
+                "children": [],
+                "depends_on": null,
+                "help": "OpenWeatherMap User API key. See project READMe.MD for instructions",
+                "id": "OPENWEATHERMAP_API_KEY",
+                "name": "OPENWEATHERMAP_API_KEY",
+                "range": null,
+                "title": "OpenWeatherMap User API key",
+                "type": "string"
+            },
+            {
+                "children": [],
+                "depends_on": null,
+                "help": "See https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes",
+                "id": "LOCATION_ID",
+                "name": "LOCATION_ID",
+                "range": null,
+                "title": "OpenWeatherMap API location code",
+                "type": "string"
+            }
+        ],
+        "depends_on": null,
+        "id": "open-weather-api-configuration",
+        "title": "Open Weather API Configuration",
         "type": "menu"
     },
     {

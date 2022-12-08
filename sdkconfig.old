@@ -177,15 +177,10 @@ CONFIG_ESP_WIFI_AUTH_WPA2_PSK=y
 # end of WiFi-Component Configuration
 
 #
-# WiFi-Component Configuration
-#
-# end of WiFi-Component Configuration
-
-#
 # Open Weather API Configuration
 #
-CONFIG_OPENWEATHERMAP_API_KEY=""
-CONFIG_CONFIG_LOCATION_ID="NY,US"
+CONFIG_OPENWEATHERMAP_API_KEY="ff31bb7619bd70b4120320c735e6afa6"
+CONFIG_LOCATION_ID="NY,US"
 # end of Open Weather API Configuration
 
 #
