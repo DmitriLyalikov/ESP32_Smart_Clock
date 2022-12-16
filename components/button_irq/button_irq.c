@@ -40,6 +40,19 @@ void vPWM_Control_Task(void *pvParameters){
  * and start Control Task
  */
 void vPWM_Control_Init(void){
+    // Configure button GPIO INC/DEC as an input with internal pull-up resistor
+    gpio_config_t button_config = {
+        .pin_bit_mask = (1 << GPIO_BRIGHTNESS_INC) | (1 << GPIO_BRIGHTNESS_DEC),
+        .mode = GPIO_MODE_INPUT,
+        .pull_up_en = GPIO_PULLUP_ENABLE,
+        .pull_down_en = GPIO_PULLDOWN_DISABLE,
+        .intr_type = GPIO_INTR_NEGEDGE
+    };
+    gpio_config(&button_config);
+
+    gpio_isr_register(GPIO_BRIGHTNESS_INC, gpio_brightness_inc_isr_handler, (void*) 0, NULL);
+    gpio_isr_register(GPIO_BRIGHTNESS_DEC, gpio_brightness_dec_isr_handler, (void*) 0, NULL);
+
     mcpwm_gpio_init(MCPWM_UNIT_0, MCPWM0A, GPIO_PWM_CONTROL);
     mcpwm_config_t pwm_config = {
         .frequency     = 30000,
@@ -57,6 +70,5 @@ void vPWM_Control_Init(void){
                             1, 
                             NULL,
                             1);
-    
 }
 
