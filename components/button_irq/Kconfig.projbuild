@@ -1,4 +1,22 @@
 menu "Button IRQ Configuration"
-    
+    config  GPIO_BRIGHTNESS_INC 
+        int "GPIO Pin For Brightness Increment Button"
+        range 0 30
+        default 0
+
+    config  GPIO_BRIGHTNESS_DEC
+        int "GPIO Pin For Brightness Decrement Button"
+        range 0 30
+        default 0
+
+    config  GPIO_WEATHER_INC
+        int "GPIO Pin For Brightness Increment Button"
+        range 0 30
+        default 0
+
+    config  GPIO_WEATHER_DEC
+        int "GPIO Pin For Weather Decrement Button"
+        range 0 30
+        default 0
 
     endmenu

@@ -1,7 +1,7 @@
 /**
  * @file button_irq.h
  * @author Dmitri Lyalikov (Dlyalikov01@manhattan.edu)
- * @brief  Weather Request functions between HTTP request and Display Queue
+ * @brief  Button Inerrupt Service Routines and Initialization Functions
  * @version 0.1
  * @date 2022-11-14
  * 
@@ -17,14 +17,42 @@
 #include "driver/gpio.h"
 #include "esp_intr_alloc.h"
 
+#define GPIO_BRIGHTNESS_INC CONFIG_GPIO_BRIGHTNESS_INC
+#define GPIO_BRIGHTNESS_DEC CONFIG_GPIO_BRIGHTNESS_DEC
+#define GPIO_WEATHER_INC    CONFIG_GPIO_WEATHER_INC
+#define GPIO_WEATHER_DEC    CONFIG_GPIO_WEATHER_DEC
 
+/**
+ * @brief
+ *  Increment Display Brightness PWM duty cycle by 10%.
+ *  Do nothing if Duty = 100
+ * @param arg 
+ */
+void IRAM_ATTR gpio_brightness_inc_isr_handler(void* arg);
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+/**
+ * @brief 
+ *  Decrease Display Brightness PWM duty cycle by 10%
+ *  Do nothing if Duty = 0
+ * @param arg 
+ */
+void IRAM_ATTR gpio_brightness_dec_isr_handler(void* arg);
 
+/**
+ * @brief 
+ *   Increase index of weather data by 1
+ *   If index = len(weather_data - 1) set to 0 (Cycle)
+ * @param arg 
+ */
+void IRAM_ATTR gpio_weather_inc_isr_handler(void* arg);
 
-
+/**
+ * @brief 
+ *   Decrease index of weather data by 1
+ *   If index = 0 set to len(weather_data - 1) (Cycle)
+ * @param arg 
+ */
+void IRAM_ATTR gpio_weather_dec_isr_handler(void* arg);
 
 
 #ifdef __cplusplus
