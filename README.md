@@ -131,6 +131,7 @@ idf.py menuconfig
 │   |── main                     
 │   └── build
 ├── enclosure                  Design (.stl) files for 3D printed system enclosure
+├── schematic                  .pdf files of circuit schematic for prototype design. TODO: Create custom PCB 
 ├── Makefile                   Makefile used by legacy GNU Make
 └── README.md                  This is the file you are currently reading
 ```
