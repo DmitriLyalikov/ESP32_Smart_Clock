@@ -2103,7 +2103,60 @@
         "type": "menu"
     },
     {
-        "children": [],
+        "children": [
+            {
+                "children": [],
+                "depends_on": null,
+                "help": null,
+                "id": "GPIO_BRIGHTNESS_INC",
+                "name": "GPIO_BRIGHTNESS_INC",
+                "range": [
+                    0,
+                    30
+                ],
+                "title": "GPIO Pin For Brightness Increment Button",
+                "type": "int"
+            },
+            {
+                "children": [],
+                "depends_on": null,
+                "help": null,
+                "id": "GPIO_BRIGHTNESS_DEC",
+                "name": "GPIO_BRIGHTNESS_DEC",
+                "range": [
+                    0,
+                    30
+                ],
+                "title": "GPIO Pin For Brightness Decrement Button",
+                "type": "int"
+            },
+            {
+                "children": [],
+                "depends_on": null,
+                "help": null,
+                "id": "GPIO_WEATHER_INC",
+                "name": "GPIO_WEATHER_INC",
+                "range": [
+                    0,
+                    30
+                ],
+                "title": "GPIO Pin For Brightness Increment Button",
+                "type": "int"
+            },
+            {
+                "children": [],
+                "depends_on": null,
+                "help": null,
+                "id": "GPIO_WEATHER_DEC",
+                "name": "GPIO_WEATHER_DEC",
+                "range": [
+                    0,
+                    30
+                ],
+                "title": "GPIO Pin For Weather Decrement Button",
+                "type": "int"
+            }
+        ],
         "depends_on": null,
         "id": "button-irq-configuration",
         "title": "Button IRQ Configuration",
