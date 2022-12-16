@@ -71,6 +71,7 @@ $<TARGET_FILE:__idf_ulp>
 $<TARGET_FILE:__idf_wifi_provisioning>
 $<TARGET_FILE:__idf_main>
 $<TARGET_FILE:__idf_ble_config>
+$<TARGET_FILE:__idf_button_irq>
 $<TARGET_FILE:__idf_esp32-smbus>
 $<TARGET_FILE:__idf_http>
 $<TARGET_FILE:__idf_i2c-lcd1602>

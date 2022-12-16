@@ -2103,6 +2103,13 @@
         "type": "menu"
     },
     {
+        "children": [],
+        "depends_on": null,
+        "id": "button-irq-configuration",
+        "title": "Button IRQ Configuration",
+        "type": "menu"
+    },
+    {
         "children": [
             {
                 "children": [],

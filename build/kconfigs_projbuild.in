@@ -5,6 +5,7 @@ source "C:/Users/Dmitr/OneDrive/Desktop/esp-idf/components/esptool_py/Kconfig.pr
 source "C:/Users/Dmitr/OneDrive/Desktop/esp-idf/components/partition_table/Kconfig.projbuild"
 source "C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/main/Kconfig.projbuild"
 source "C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/components/ble_config/Kconfig.projbuild"
+source "C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/components/button_irq/Kconfig.projbuild"
 source "C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/components/i2c-lcd1602/Kconfig.projbuild"
 source "C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/components/net_ctlr/Kconfig.projbuild"
 source "C:/Users/Dmitr/OneDrive/Desktop/esp-idf/projects/ESP32_Smart_Clock/components/weather_sync/Kconfig.projbuild"
