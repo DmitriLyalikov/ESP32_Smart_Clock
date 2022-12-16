@@ -28,6 +28,7 @@
 #include "net_ctlr.h"
 #include "ntp_sync.h"
 #include "weather.h"
+#include "button_irq.h"
 
 #define TIMEZONE              CONFIG_TIMEZONE
 #define CITY                  CONFIG_CITY
@@ -217,4 +218,5 @@ void app_main(void)
                             1, 
                             NULL,
                             1);
+    vPWM_Control_Init();
 }

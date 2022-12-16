@@ -8,6 +8,7 @@ void IRAM_ATTR gpio_brightness_inc_isr_handler(void* arg){
     if (lcd_duty_cycle < 100) {
         lcd_duty_cycle += 10;
     }
+    ESP_LOGI(TAG, "IRQ INC Fired");
     vTaskNotifyGiveFromISR(vPWM_Control_Task, lcd_duty_cycle);
 }
 
@@ -16,6 +17,7 @@ void IRAM_ATTR gpio_brightness_dec_isr_handler(void* arg){
     if (lcd_duty_cycle > 0) {
         lcd_duty_cycle -= 10;
     }
+    ESP_LOGI(TAG, "IRQ DEC Fired");
     vTaskNotifyGiveFromISR(vPWM_Control_Task, lcd_duty_cycle);
 }
 
