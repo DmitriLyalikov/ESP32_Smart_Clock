@@ -12,11 +12,14 @@
 #define BUTTON_IRQ_H
 
 #include "esp_err.h"
+#include "esp_log.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "driver/gpio.h"
 #include "esp_intr_alloc.h"
+#include "driver/mcpwm.h"
 
+#define GPIO_PWM_CONTROL    CONFIG_GPIO_PWM_CONTROL
 #define GPIO_BRIGHTNESS_INC CONFIG_GPIO_BRIGHTNESS_INC
 #define GPIO_BRIGHTNESS_DEC CONFIG_GPIO_BRIGHTNESS_DEC
 #define GPIO_WEATHER_INC    CONFIG_GPIO_WEATHER_INC
@@ -53,6 +56,10 @@ void IRAM_ATTR gpio_weather_inc_isr_handler(void* arg);
  * @param arg 
  */
 void IRAM_ATTR gpio_weather_dec_isr_handler(void* arg);
+
+void vPWM_Control_Task(void *pvParameters);
+
+void vPWM_Control_Init(void);
 
 
 #ifdef __cplusplus

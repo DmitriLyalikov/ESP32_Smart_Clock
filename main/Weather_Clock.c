@@ -152,7 +152,7 @@ void vTimeSync_Callback(TimerHandle_t xTimer) {
 
 /**
  * @brief Thread-Safe Weather Synchronization Timer Callback
- *      Must be used after WiFI connection is established.
+ *      Must be used after WiFi connection is established.
  *      Sends Weather request to weather server api and processes JSON response
  *      write Weather_Payload_t to xWeatherQueue mailbox 
  * @param xTimerHandle 

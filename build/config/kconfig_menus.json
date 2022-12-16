@@ -2155,6 +2155,19 @@
                 ],
                 "title": "GPIO Pin For Weather Decrement Button",
                 "type": "int"
+            },
+            {
+                "children": [],
+                "depends_on": null,
+                "help": null,
+                "id": "GPIO_PWM_CONTROL",
+                "name": "GPIO_PWM_CONTROL",
+                "range": [
+                    0,
+                    30
+                ],
+                "title": "GPIO Pin For PWM Output",
+                "type": "int"
             }
         ],
         "depends_on": null,

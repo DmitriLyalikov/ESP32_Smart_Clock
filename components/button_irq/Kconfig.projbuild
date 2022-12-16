@@ -19,4 +19,9 @@ menu "Button IRQ Configuration"
         range 0 30
         default 0
 
+    config  GPIO_PWM_CONTROL
+        int "GPIO Pin For PWM Output"
+        range 0 30
+        default 0
+
     endmenu
