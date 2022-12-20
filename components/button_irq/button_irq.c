@@ -9,7 +9,7 @@ void IRAM_ATTR gpio_brightness_inc_isr_handler(void* arg){
         lcd_duty_cycle += 10;
     }
     ESP_LOGI(TAG, "IRQ INC Fired");
-    vTaskNotifyGiveFromISR(vPWM_Control_Task, lcd_duty_cycle);
+    vTaskNotifyGiveFromISR(vPWM_Control_Task, (int *)lcd_duty_cycle);
 }
 
 /**
@@ -24,7 +24,7 @@ void IRAM_ATTR gpio_brightness_dec_isr_handler(void* arg){
         lcd_duty_cycle -= 10;
     }
     ESP_LOGI(TAG, "IRQ DEC Fired");
-    vTaskNotifyGiveFromISR(vPWM_Control_Task, lcd_duty_cycle);
+    vTaskNotifyGiveFromISR(vPWM_Control_Task, (int *)lcd_duty_cycle);
 }
 
 /**
@@ -37,7 +37,7 @@ void vPWM_Control_Task(void *pvParameters){
     // Disable interrupts to access volatile global variable safely
     taskDISABLE_INTERRUPTS();
     // Critical Section 
-    uint8_t ulDuty_Cycle = lcd_duty_cycle;
+    BaseType_t ulDuty_Cycle = lcd_duty_cycle;
     // Reenable Interrupts
     taskENABLE_INTERRUPTS();
     // Non-Blocking check if duty cycle changed 
@@ -46,7 +46,7 @@ void vPWM_Control_Task(void *pvParameters){
     while(1){
         // Block until the brightness value is changed by user
         ulDuty_Cycle = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-        ESP_LOGI(TAG, "Setting PWM Duty Cycle: %d" ulDutyCycle);
+        // ESP_LOGI(TAG, "Setting PWM Duty Cycle: %d", ulDutyCycle);
         ESP_ERROR_CHECK(mcpwm_set_duty(MCPWM_UNIT_0, MCPWM_TIMER_0, MCPWM_OPR_A, ulDuty_Cycle));
     }
 }
@@ -66,14 +66,15 @@ void vPWM_Control_Init(void){
     };
     gpio_config(&button_config);
 
-    gpio_isr_register(GPIO_BRIGHTNESS_INC, gpio_brightness_inc_isr_handler, (void*) 0, NULL);
-    gpio_isr_register(GPIO_BRIGHTNESS_DEC, gpio_brightness_dec_isr_handler, (void*) 0, NULL);
+    ESP_ERROR_CHECK(gpio_install_isr_service(ESP_INTR_FLAG_IRAM));
+    gpio_isr_handler_add(GPIO_BRIGHTNESS_INC, gpio_brightness_inc_isr_handler, NULL);
+    gpio_isr_handler_add(GPIO_BRIGHTNESS_DEC, gpio_brightness_dec_isr_handler, NULL);
 
     // Enable HW Interrupts on the pins
     gpio_intr_enable(GPIO_BRIGHTNESS_INC);
     gpio_intr_enable(GPIO_BRIGHTNESS_DEC);
 
-    ESP_LOGI(TAG, "Registered PWM ISRs on Pins: %d and %d" GPIO_BRIGHTNESS_INC, GPIO_BRIGHTNESS_DEC);
+    ESP_LOGI(TAG, "Registered PWM ISRs");
 
     mcpwm_gpio_init(MCPWM_UNIT_0, MCPWM0A, GPIO_PWM_CONTROL);
     mcpwm_config_t pwm_config = {
