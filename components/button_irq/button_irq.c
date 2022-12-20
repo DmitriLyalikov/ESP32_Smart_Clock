@@ -12,6 +12,12 @@ void IRAM_ATTR gpio_brightness_inc_isr_handler(void* arg){
     vTaskNotifyGiveFromISR(vPWM_Control_Task, lcd_duty_cycle);
 }
 
+/**
+ * @brief 
+ *   Decrease index of weather data by 1
+ *   If index = 0 set to len(weather_data - 1) (Cycle)
+ * @param arg 
+ */
 void IRAM_ATTR gpio_brightness_dec_isr_handler(void* arg){
 
     if (lcd_duty_cycle > 0) {
@@ -21,6 +27,12 @@ void IRAM_ATTR gpio_brightness_dec_isr_handler(void* arg){
     vTaskNotifyGiveFromISR(vPWM_Control_Task, lcd_duty_cycle);
 }
 
+/**
+ * @brief Low priority, low resource task that sets LCD brightness and
+ *  blocks until a new value is set with the button ISRs.
+ * 
+ * @param pvParameters 
+ */
 void vPWM_Control_Task(void *pvParameters){
     // Disable interrupts to access volatile global variable safely
     taskDISABLE_INTERRUPTS();
@@ -32,7 +44,9 @@ void vPWM_Control_Task(void *pvParameters){
     ulDuty_Cycle = ulTaskNotifyTake(pdTRUE, 0);
     ESP_ERROR_CHECK(mcpwm_set_duty(MCPWM_UNIT_0, MCPWM_TIMER_0, MCPWM_OPR_A, ulDuty_Cycle));
     while(1){
+        // Block until the brightness value is changed by user
         ulDuty_Cycle = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+        ESP_LOGI(TAG, "Setting PWM Duty Cycle: %d" ulDutyCycle);
         ESP_ERROR_CHECK(mcpwm_set_duty(MCPWM_UNIT_0, MCPWM_TIMER_0, MCPWM_OPR_A, ulDuty_Cycle));
     }
 }
@@ -46,14 +60,20 @@ void vPWM_Control_Init(void){
     gpio_config_t button_config = {
         .pin_bit_mask = (1 << GPIO_BRIGHTNESS_INC) | (1 << GPIO_BRIGHTNESS_DEC),
         .mode = GPIO_MODE_INPUT,
-        .pull_up_en = GPIO_PULLUP_ENABLE,
+        .pull_up_en = GPIO_PULLUP_ENABLE,  // Using internal pull ups
         .pull_down_en = GPIO_PULLDOWN_DISABLE,
-        .intr_type = GPIO_INTR_NEGEDGE
+        .intr_type = GPIO_INTR_NEGEDGE     // buttons are pulled up, trigger on falling edge
     };
     gpio_config(&button_config);
 
     gpio_isr_register(GPIO_BRIGHTNESS_INC, gpio_brightness_inc_isr_handler, (void*) 0, NULL);
     gpio_isr_register(GPIO_BRIGHTNESS_DEC, gpio_brightness_dec_isr_handler, (void*) 0, NULL);
+
+    // Enable HW Interrupts on the pins
+    gpio_intr_enable(GPIO_BRIGHTNESS_INC);
+    gpio_intr_enable(GPIO_BRIGHTNESS_DEC);
+
+    ESP_LOGI(TAG, "Registered PWM ISRs on Pins: %d and %d" GPIO_BRIGHTNESS_INC, GPIO_BRIGHTNESS_DEC);
 
     mcpwm_gpio_init(MCPWM_UNIT_0, MCPWM0A, GPIO_PWM_CONTROL);
     mcpwm_config_t pwm_config = {

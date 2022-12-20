@@ -218,5 +218,6 @@ void app_main(void)
                             1, 
                             NULL,
                             1);
+    // Register brightness button ISRs and start LCD brightness background task
     vPWM_Control_Init();
 }
