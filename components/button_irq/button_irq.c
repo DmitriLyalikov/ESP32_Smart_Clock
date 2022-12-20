@@ -1,7 +1,8 @@
 #include "button_irq.h"
 
 static const char *TAG = "LCD_PWM_Controller";
-static volatile BaseType_t lcd_duty_cycle;
+// Default LCD brightness initialized to 100%
+static volatile BaseType_t lcd_duty_cycle = 100;
 
 void IRAM_ATTR gpio_brightness_inc_isr_handler(void* arg){
 
